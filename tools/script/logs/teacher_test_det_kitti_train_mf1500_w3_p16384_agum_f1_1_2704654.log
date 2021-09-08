@@ -1,0 +1,1359 @@
+/mnt/data/vras/data/gebreawe/Modified_Experiments/ST_PointRCNN_KITTI2/Student/tools/../lib/config.py:197: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  yaml_cfg = edict(yaml.load(f))
+2021-09-08 22:47:05,687   INFO  **********************Start logging**********************
+2021-09-08 22:47:05,687   INFO  cfg_file         ../cfgs/test/test_kitti_train_mf1500_w3_p16384_agum_f1_1.yaml
+2021-09-08 22:47:05,687   INFO  eval_mode        rcnn
+2021-09-08 22:47:05,687   INFO  eval_all         False
+2021-09-08 22:47:05,687   INFO  test             False
+2021-09-08 22:47:05,687   INFO  ckpt             ../output/teacher/rcnn/kitti_train_mf1500_w3_p16384_agum_f1_1/ckpt/best.pth
+2021-09-08 22:47:05,687   INFO  rpn_ckpt         None
+2021-09-08 22:47:05,688   INFO  rcnn_ckpt        None
+2021-09-08 22:47:05,688   INFO  batch_size       1
+2021-09-08 22:47:05,688   INFO  workers          16
+2021-09-08 22:47:05,688   INFO  extra_tag        default
+2021-09-08 22:47:05,688   INFO  output_dir       ../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1
+2021-09-08 22:47:05,688   INFO  ckpt_dir         None
+2021-09-08 22:47:05,688   INFO  save_result      False
+2021-09-08 22:47:05,688   INFO  save_rpn_feature False
+2021-09-08 22:47:05,688   INFO  random_select    True
+2021-09-08 22:47:05,688   INFO  start_epoch      0
+2021-09-08 22:47:05,688   INFO  rcnn_eval_roi_dir None
+2021-09-08 22:47:05,688   INFO  rcnn_eval_feature_dir None
+2021-09-08 22:47:05,688   INFO  set_cfgs         None
+2021-09-08 22:47:05,688   INFO  cfg.TAG: test_kitti_train_mf1500_w3_p16384_agum_f1_1
+2021-09-08 22:47:05,688   INFO  cfg.CLASSES: VEHICLE
+2021-09-08 22:47:05,688   INFO  cfg.INCLUDE_SIMILAR_TYPE: False
+2021-09-08 22:47:05,688   INFO  cfg.DATA_PATH: /mnt/beegfs/gpu/argoverse-tracking-all-training/KITTI_DET/testing
+2021-09-08 22:47:05,688   INFO  cfg.VAL_DATA_PATH: /mnt/beegfs/gpu/argoverse-tracking-all-training/KITTI/validation
+2021-09-08 22:47:05,688   INFO  cfg.AUG_DATA: True
+2021-09-08 22:47:05,688   INFO  cfg.AUG_METHOD_LIST: ['rotation', 'scaling', 'flip']
+2021-09-08 22:47:05,688   INFO  cfg.AUG_METHOD_PROB: [1.0, 1.0, 0.5]
+2021-09-08 22:47:05,689   INFO  cfg.AUG_ROT_RANGE: 18
+2021-09-08 22:47:05,689   INFO  cfg.GT_AUG_ENABLED: True
+2021-09-08 22:47:05,689   INFO  cfg.GT_EXTRA_NUM: 15
+2021-09-08 22:47:05,689   INFO  cfg.GT_AUG_RAND_NUM: True
+2021-09-08 22:47:05,689   INFO  cfg.GT_AUG_APPLY_PROB: 1.0
+2021-09-08 22:47:05,689   INFO  cfg.GT_AUG_HARD_RATIO: 0.6
+2021-09-08 22:47:05,689   INFO  cfg.PC_REDUCE_BY_RANGE: True
+2021-09-08 22:47:05,689   INFO  cfg.past_frame: 1
+2021-09-08 22:47:05,689   INFO  cfg.future_frame: 1
+2021-09-08 22:47:05,689   INFO  cfg.label_name: label
+2021-09-08 22:47:05,690   INFO  cfg.PC_AREA_SCOPE: [[  0.   70.4]
+ [ -3.    3. ]
+ [-40.   40. ]]
+2021-09-08 22:47:05,690   INFO  cfg.CLS_MEAN_SIZE: [[1.5256319 1.6285675 3.8831165]]
+2021-09-08 22:47:05,690   INFO  
+cfg.RPN = edict()
+2021-09-08 22:47:05,690   INFO  cfg.RPN.ENABLED: True
+2021-09-08 22:47:05,690   INFO  cfg.RPN.FIXED: True
+2021-09-08 22:47:05,690   INFO  cfg.RPN.USE_INTENSITY: True
+2021-09-08 22:47:05,690   INFO  cfg.RPN.LOC_XZ_FINE: True
+2021-09-08 22:47:05,690   INFO  cfg.RPN.LOC_SCOPE: 3.0
+2021-09-08 22:47:05,690   INFO  cfg.RPN.LOC_BIN_SIZE: 0.5
+2021-09-08 22:47:05,690   INFO  cfg.RPN.NUM_HEAD_BIN: 12
+2021-09-08 22:47:05,690   INFO  cfg.RPN.BACKBONE: pointnet2_msg
+2021-09-08 22:47:05,690   INFO  cfg.RPN.USE_BN: True
+2021-09-08 22:47:05,690   INFO  cfg.RPN.NUM_POINTS: 16384
+2021-09-08 22:47:05,690   INFO  
+cfg.RPN.SA_CONFIG = edict()
+2021-09-08 22:47:05,690   INFO  cfg.RPN.SA_CONFIG.NPOINTS: [4096, 1024, 128]
+2021-09-08 22:47:05,690   INFO  cfg.RPN.SA_CONFIG.RADIUS: [[0.2, 0.75], [0.75, 2.0], [2.0, 5.0]]
+2021-09-08 22:47:05,691   INFO  cfg.RPN.SA_CONFIG.NSAMPLE: [[16, 32], [16, 32], [16, 32]]
+2021-09-08 22:47:05,691   INFO  cfg.RPN.SA_CONFIG.MLPS: [[[16, 16, 32], [32, 32, 64]], [[64, 64, 128], [64, 96, 128]], [[128, 256, 512], [128, 384, 512]]]
+2021-09-08 22:47:05,691   INFO  cfg.RPN.FP_MLPS: [[128, 128], [256, 256], [512, 512]]
+2021-09-08 22:47:05,691   INFO  cfg.RPN.CLS_FC: [128]
+2021-09-08 22:47:05,691   INFO  cfg.RPN.REG_FC: [128]
+2021-09-08 22:47:05,691   INFO  cfg.RPN.DP_RATIO: 0.5
+2021-09-08 22:47:05,691   INFO  cfg.RPN.LOSS_CLS: SigmoidFocalLoss
+2021-09-08 22:47:05,691   INFO  cfg.RPN.FG_WEIGHT: 15
+2021-09-08 22:47:05,691   INFO  cfg.RPN.FOCAL_ALPHA: [0.25, 0.75]
+2021-09-08 22:47:05,691   INFO  cfg.RPN.FOCAL_GAMMA: 2.0
+2021-09-08 22:47:05,691   INFO  cfg.RPN.REG_LOSS_WEIGHT: [1.0, 1.0, 1.0]
+2021-09-08 22:47:05,691   INFO  cfg.RPN.LOSS_WEIGHT: [1.0, 1.0]
+2021-09-08 22:47:05,691   INFO  cfg.RPN.NMS_TYPE: normal
+2021-09-08 22:47:05,691   INFO  cfg.RPN.SCORE_THRESH: 0.1
+2021-09-08 22:47:05,691   INFO  
+cfg.RCNN = edict()
+2021-09-08 22:47:05,691   INFO  cfg.RCNN.ENABLED: True
+2021-09-08 22:47:05,691   INFO  cfg.RCNN.USE_RPN_FEATURES: True
+2021-09-08 22:47:05,691   INFO  cfg.RCNN.USE_MASK: True
+2021-09-08 22:47:05,691   INFO  cfg.RCNN.MASK_TYPE: seg
+2021-09-08 22:47:05,691   INFO  cfg.RCNN.USE_INTENSITY: False
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.USE_DEPTH: True
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.USE_SEG_SCORE: False
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.ROI_SAMPLE_JIT: True
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.ROI_FG_AUG_TIMES: 10
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.REG_AUG_METHOD: multiple
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.POOL_EXTRA_WIDTH: 1.0
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.LOC_SCOPE: 1.5
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.LOC_BIN_SIZE: 0.5
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.NUM_HEAD_BIN: 9
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.LOC_Y_BY_BIN: False
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.LOC_Y_SCOPE: 0.5
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.LOC_Y_BIN_SIZE: 0.25
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.SIZE_RES_ON_ROI: False
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.USE_BN: False
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.DP_RATIO: 0.0
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.BACKBONE: pointnet
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.XYZ_UP_LAYER: [128, 128]
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.NUM_POINTS: 512
+2021-09-08 22:47:05,692   INFO  
+cfg.RCNN.SA_CONFIG = edict()
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.SA_CONFIG.NPOINTS: [128, 32, -1]
+2021-09-08 22:47:05,692   INFO  cfg.RCNN.SA_CONFIG.RADIUS: [0.25, 0.5, 100.0]
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.SA_CONFIG.NSAMPLE: [64, 64, 64]
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.SA_CONFIG.MLPS: [[128, 128, 128], [128, 128, 256], [256, 256, 512]]
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.CLS_FC: [256, 256]
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.REG_FC: [256, 256]
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.LOSS_CLS: BinaryCrossEntropy
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.FOCAL_ALPHA: [0.25, 0.75]
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.FOCAL_GAMMA: 2.0
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.CLS_WEIGHT: [1. 1. 1.]
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.CLS_FG_THRESH: 0.6
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.CLS_BG_THRESH: 0.45
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.CLS_BG_THRESH_LO: 0.05
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.REG_FG_THRESH: 0.55
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.FG_RATIO: 0.5
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.ROI_PER_IMAGE: 64
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.HARD_BG_RATIO: 0.8
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.SCORE_THRESH: 0.1
+2021-09-08 22:47:05,693   INFO  cfg.RCNN.NMS_THRESH: 0.01
+2021-09-08 22:47:05,694   INFO  
+cfg.TRAIN = edict()
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.SPLIT: train
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.VAL_SPLIT: sample
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.LR: 0.002
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.LR_CLIP: 1e-05
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.LR_DECAY: 0.5
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.DECAY_STEP_LIST: [100, 150, 180, 200]
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.LR_WARMUP: True
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.WARMUP_MIN: 0.0002
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.WARMUP_EPOCH: 1
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.BN_MOMENTUM: 0.1
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.BN_DECAY: 0.5
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.BNM_CLIP: 0.01
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.BN_DECAY_STEP_LIST: [1000]
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.OPTIMIZER: adam_onecycle
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.WEIGHT_DECAY: 0.001
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.MOMENTUM: 0.9
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.MOMS: [0.95, 0.85]
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.DIV_FACTOR: 10.0
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.PCT_START: 0.4
+2021-09-08 22:47:05,694   INFO  cfg.TRAIN.GRAD_NORM_CLIP: 1.0
+2021-09-08 22:47:05,695   INFO  cfg.TRAIN.RPN_PRE_NMS_TOP_N: 9000
+2021-09-08 22:47:05,695   INFO  cfg.TRAIN.RPN_POST_NMS_TOP_N: 512
+2021-09-08 22:47:05,695   INFO  cfg.TRAIN.RPN_NMS_THRESH: 0.75
+2021-09-08 22:47:05,695   INFO  cfg.TRAIN.RPN_DISTANCE_BASED_PROPOSE: True
+2021-09-08 22:47:05,695   INFO  
+cfg.TEST = edict()
+2021-09-08 22:47:05,695   INFO  cfg.TEST.SPLIT: test
+2021-09-08 22:47:05,695   INFO  cfg.TEST.RPN_PRE_NMS_TOP_N: 9000
+2021-09-08 22:47:05,695   INFO  cfg.TEST.RPN_POST_NMS_TOP_N: 300
+2021-09-08 22:47:05,695   INFO  cfg.TEST.RPN_NMS_THRESH: 0.7
+2021-09-08 22:47:05,695   INFO  cfg.TEST.RPN_DISTANCE_BASED_PROPOSE: True
+2021-09-08 22:47:07,388   INFO  ==> Loading from checkpoint '../output/teacher/rcnn/kitti_train_mf1500_w3_p16384_agum_f1_1/ckpt/best.pth'
+2021-09-08 22:47:07,475   INFO  ==> Done
+2021-09-08 22:47:07,478   INFO  ---- EPOCH 1 JOINT EVALUATION ----
+2021-09-08 22:47:07,478   INFO  ==> Output file: ../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1
+eval:   0%|          | 0/5349 [00:00<?, ?it/s]--------------------------------------------------------------len 1st data loader 5349
+eval:   0%|          | 0/5349 [00:05<?, ?it/s, mode=EVAL, recall=2/4]eval:   0%|          | 1/5349 [00:05<7:30:32,  5.05s/it, mode=EVAL, recall=2/4]eval:   0%|          | 1/5349 [00:05<7:30:32,  5.05s/it, mode=EVAL, recall=4/8]eval:   0%|          | 2/5349 [00:05<3:17:59,  2.22s/it, mode=EVAL, recall=4/8]eval:   0%|          | 2/5349 [00:05<3:17:59,  2.22s/it, mode=EVAL, recall=8/12]eval:   0%|          | 3/5349 [00:05<1:57:07,  1.31s/it, mode=EVAL, recall=8/12]eval:   0%|          | 3/5349 [00:05<1:57:07,  1.31s/it, mode=EVAL, recall=12/17]eval:   0%|          | 4/5349 [00:05<1:19:07,  1.13it/s, mode=EVAL, recall=12/17]eval:   0%|          | 4/5349 [00:05<1:19:07,  1.13it/s, mode=EVAL, recall=15/22]eval:   0%|          | 5/5349 [00:05<58:07,  1.53it/s, mode=EVAL, recall=15/22]  eval:   0%|          | 5/5349 [00:06<58:07,  1.53it/s, mode=EVAL, recall=18/28]eval:   0%|          | 6/5349 [00:06<45:26,  1.96it/s, mode=EVAL, recall=18/28]eval:   0%|          | 6/5349 [00:06<45:26,  1.96it/s, mode=EVAL, recall=21/34]eval:   0%|          | 7/5349 [00:06<37:25,  2.38it/s, mode=EVAL, recall=21/34]eval:   0%|          | 7/5349 [00:06<37:25,  2.38it/s, mode=EVAL, recall=25/39]eval:   0%|          | 8/5349 [00:06<32:08,  2.77it/s, mode=EVAL, recall=25/39]eval:   0%|          | 8/5349 [00:06<32:08,  2.77it/s, mode=EVAL, recall=29/45]eval:   0%|          | 9/5349 [00:06<28:37,  3.11it/s, mode=EVAL, recall=29/45]eval:   0%|          | 9/5349 [00:07<28:37,  3.11it/s, mode=EVAL, recall=34/51]eval:   0%|          | 10/5349 [00:07<26:14,  3.39it/s, mode=EVAL, recall=34/51]eval:   0%|          | 10/5349 [00:07<26:14,  3.39it/s, mode=EVAL, recall=39/57]eval:   0%|          | 11/5349 [00:07<24:38,  3.61it/s, mode=EVAL, recall=39/57]eval:   0%|          | 11/5349 [00:07<24:38,  3.61it/s, mode=EVAL, recall=45/63]eval:   0%|          | 12/5349 [00:07<23:29,  3.79it/s, mode=EVAL, recall=45/63]eval:   0%|          | 12/5349 [00:07<23:29,  3.79it/s, mode=EVAL, recall=51/70]eval:   0%|          | 13/5349 [00:07<22:44,  3.91it/s, mode=EVAL, recall=51/70]eval:   0%|          | 13/5349 [00:08<22:44,  3.91it/s, mode=EVAL, recall=56/76]eval:   0%|          | 14/5349 [00:08<22:13,  4.00it/s, mode=EVAL, recall=56/76]eval:   0%|          | 14/5349 [00:08<22:13,  4.00it/s, mode=EVAL, recall=61/82]eval:   0%|          | 15/5349 [00:08<21:49,  4.07it/s, mode=EVAL, recall=61/82]eval:   0%|          | 15/5349 [00:08<21:49,  4.07it/s, mode=EVAL, recall=67/88]eval:   0%|          | 16/5349 [00:08<21:37,  4.11it/s, mode=EVAL, recall=67/88]eval:   0%|          | 16/5349 [00:08<21:37,  4.11it/s, mode=EVAL, recall=73/94]eval:   0%|          | 17/5349 [00:08<21:24,  4.15it/s, mode=EVAL, recall=73/94]eval:   0%|          | 17/5349 [00:09<21:24,  4.15it/s, mode=EVAL, recall=78/99]eval:   0%|          | 18/5349 [00:09<21:13,  4.19it/s, mode=EVAL, recall=78/99]eval:   0%|          | 18/5349 [00:09<21:13,  4.19it/s, mode=EVAL, recall=84/105]eval:   0%|          | 19/5349 [00:09<21:06,  4.21it/s, mode=EVAL, recall=84/105]eval:   0%|          | 19/5349 [00:09<21:06,  4.21it/s, mode=EVAL, recall=89/111]eval:   0%|          | 20/5349 [00:09<21:01,  4.22it/s, mode=EVAL, recall=89/111]eval:   0%|          | 20/5349 [00:09<21:01,  4.22it/s, mode=EVAL, recall=93/117]eval:   0%|          | 21/5349 [00:09<20:57,  4.24it/s, mode=EVAL, recall=93/117]eval:   0%|          | 21/5349 [00:09<20:57,  4.24it/s, mode=EVAL, recall=98/123]eval:   0%|          | 22/5349 [00:09<20:54,  4.25it/s, mode=EVAL, recall=98/123]eval:   0%|          | 22/5349 [00:10<20:54,  4.25it/s, mode=EVAL, recall=103/128]eval:   0%|          | 23/5349 [00:10<20:52,  4.25it/s, mode=EVAL, recall=103/128]eval:   0%|          | 23/5349 [00:10<20:52,  4.25it/s, mode=EVAL, recall=107/133]eval:   0%|          | 24/5349 [00:10<20:50,  4.26it/s, mode=EVAL, recall=107/133]eval:   0%|          | 24/5349 [00:10<20:50,  4.26it/s, mode=EVAL, recall=111/138]eval:   0%|          | 25/5349 [00:10<20:49,  4.26it/s, mode=EVAL, recall=111/138]eval:   0%|          | 25/5349 [00:10<20:49,  4.26it/s, mode=EVAL, recall=115/142]eval:   0%|          | 26/5349 [00:10<20:49,  4.26it/s, mode=EVAL, recall=115/142]eval:   0%|          | 26/5349 [00:11<20:49,  4.26it/s, mode=EVAL, recall=118/146]eval:   1%|          | 27/5349 [00:11<20:50,  4.26it/s, mode=EVAL, recall=118/146]eval:   1%|          | 27/5349 [00:11<20:50,  4.26it/s, mode=EVAL, recall=121/150]eval:   1%|          | 28/5349 [00:11<20:49,  4.26it/s, mode=EVAL, recall=121/150]eval:   1%|          | 28/5349 [00:11<20:49,  4.26it/s, mode=EVAL, recall=124/153]eval:   1%|          | 29/5349 [00:11<20:50,  4.25it/s, mode=EVAL, recall=124/153]eval:   1%|          | 29/5349 [00:11<20:50,  4.25it/s, mode=EVAL, recall=127/156]eval:   1%|          | 30/5349 [00:11<20:50,  4.25it/s, mode=EVAL, recall=127/156]eval:   1%|          | 30/5349 [00:12<20:50,  4.25it/s, mode=EVAL, recall=130/159]eval:   1%|          | 31/5349 [00:12<20:49,  4.26it/s, mode=EVAL, recall=130/159]eval:   1%|          | 31/5349 [00:12<20:49,  4.26it/s, mode=EVAL, recall=133/162]eval:   1%|          | 32/5349 [00:12<20:49,  4.26it/s, mode=EVAL, recall=133/162]eval:   1%|          | 32/5349 [00:12<20:49,  4.26it/s, mode=EVAL, recall=136/165]eval:   1%|          | 33/5349 [00:12<20:48,  4.26it/s, mode=EVAL, recall=136/165]eval:   1%|          | 33/5349 [00:12<20:48,  4.26it/s, mode=EVAL, recall=138/167]eval:   1%|          | 34/5349 [00:12<20:48,  4.26it/s, mode=EVAL, recall=138/167]eval:   1%|          | 34/5349 [00:13<20:48,  4.26it/s, mode=EVAL, recall=140/169]eval:   1%|          | 35/5349 [00:13<20:49,  4.25it/s, mode=EVAL, recall=140/169]eval:   1%|          | 35/5349 [00:13<20:49,  4.25it/s, mode=EVAL, recall=141/170]eval:   1%|          | 36/5349 [00:13<20:53,  4.24it/s, mode=EVAL, recall=141/170]eval:   1%|          | 36/5349 [00:13<20:53,  4.24it/s, mode=EVAL, recall=142/171]eval:   1%|          | 37/5349 [00:13<20:51,  4.24it/s, mode=EVAL, recall=142/171]eval:   1%|          | 37/5349 [00:13<20:51,  4.24it/s, mode=EVAL, recall=143/172]eval:   1%|          | 38/5349 [00:13<20:50,  4.25it/s, mode=EVAL, recall=143/172]eval:   1%|          | 38/5349 [00:13<20:50,  4.25it/s, mode=EVAL, recall=144/173]eval:   1%|          | 39/5349 [00:13<20:49,  4.25it/s, mode=EVAL, recall=144/173]eval:   1%|          | 39/5349 [00:14<20:49,  4.25it/s, mode=EVAL, recall=145/174]eval:   1%|          | 40/5349 [00:14<20:48,  4.25it/s, mode=EVAL, recall=145/174]eval:   1%|          | 40/5349 [00:14<20:48,  4.25it/s, mode=EVAL, recall=146/175]eval:   1%|          | 41/5349 [00:14<20:47,  4.25it/s, mode=EVAL, recall=146/175]eval:   1%|          | 41/5349 [00:14<20:47,  4.25it/s, mode=EVAL, recall=147/176]eval:   1%|          | 42/5349 [00:14<20:47,  4.25it/s, mode=EVAL, recall=147/176]eval:   1%|          | 42/5349 [00:14<20:47,  4.25it/s, mode=EVAL, recall=148/177]eval:   1%|          | 43/5349 [00:14<20:47,  4.25it/s, mode=EVAL, recall=148/177]eval:   1%|          | 43/5349 [00:15<20:47,  4.25it/s, mode=EVAL, recall=149/178]eval:   1%|          | 44/5349 [00:15<20:45,  4.26it/s, mode=EVAL, recall=149/178]eval:   1%|          | 44/5349 [00:15<20:45,  4.26it/s, mode=EVAL, recall=150/179]eval:   1%|          | 45/5349 [00:15<20:47,  4.25it/s, mode=EVAL, recall=150/179]eval:   1%|          | 45/5349 [00:15<20:47,  4.25it/s, mode=EVAL, recall=151/180]eval:   1%|          | 46/5349 [00:15<20:45,  4.26it/s, mode=EVAL, recall=151/180]eval:   1%|          | 46/5349 [00:15<20:45,  4.26it/s, mode=EVAL, recall=152/182]eval:   1%|          | 47/5349 [00:15<20:44,  4.26it/s, mode=EVAL, recall=152/182]eval:   1%|          | 47/5349 [00:16<20:44,  4.26it/s, mode=EVAL, recall=153/184]eval:   1%|          | 48/5349 [00:16<20:43,  4.26it/s, mode=EVAL, recall=153/184]eval:   1%|          | 48/5349 [00:16<20:43,  4.26it/s, mode=EVAL, recall=153/185]eval:   1%|          | 49/5349 [00:16<20:43,  4.26it/s, mode=EVAL, recall=153/185]eval:   1%|          | 49/5349 [00:16<20:43,  4.26it/s, mode=EVAL, recall=153/186]eval:   1%|          | 50/5349 [00:16<20:42,  4.26it/s, mode=EVAL, recall=153/186]eval:   1%|          | 50/5349 [00:16<20:42,  4.26it/s, mode=EVAL, recall=153/187]eval:   1%|          | 51/5349 [00:16<20:42,  4.26it/s, mode=EVAL, recall=153/187]eval:   1%|          | 51/5349 [00:17<20:42,  4.26it/s, mode=EVAL, recall=153/188]eval:   1%|          | 52/5349 [00:17<20:42,  4.26it/s, mode=EVAL, recall=153/188]eval:   1%|          | 52/5349 [00:17<20:42,  4.26it/s, mode=EVAL, recall=153/189]eval:   1%|          | 53/5349 [00:17<20:40,  4.27it/s, mode=EVAL, recall=153/189]eval:   1%|          | 53/5349 [00:17<20:40,  4.27it/s, mode=EVAL, recall=153/190]eval:   1%|          | 54/5349 [00:17<20:40,  4.27it/s, mode=EVAL, recall=153/190]eval:   1%|          | 54/5349 [00:17<20:40,  4.27it/s, mode=EVAL, recall=153/191]eval:   1%|          | 55/5349 [00:17<20:40,  4.27it/s, mode=EVAL, recall=153/191]eval:   1%|          | 55/5349 [00:17<20:40,  4.27it/s, mode=EVAL, recall=153/192]eval:   1%|          | 56/5349 [00:17<20:41,  4.26it/s, mode=EVAL, recall=153/192]eval:   1%|          | 56/5349 [00:18<20:41,  4.26it/s, mode=EVAL, recall=153/194]eval:   1%|          | 57/5349 [00:18<20:41,  4.26it/s, mode=EVAL, recall=153/194]eval:   1%|          | 57/5349 [00:18<20:41,  4.26it/s, mode=EVAL, recall=153/196]eval:   1%|          | 58/5349 [00:18<20:42,  4.26it/s, mode=EVAL, recall=153/196]eval:   1%|          | 58/5349 [00:18<20:42,  4.26it/s, mode=EVAL, recall=153/198]eval:   1%|          | 59/5349 [00:18<20:42,  4.26it/s, mode=EVAL, recall=153/198]eval:   1%|          | 59/5349 [00:18<20:42,  4.26it/s, mode=EVAL, recall=153/200]eval:   1%|          | 60/5349 [00:18<20:41,  4.26it/s, mode=EVAL, recall=153/200]eval:   1%|          | 60/5349 [00:19<20:41,  4.26it/s, mode=EVAL, recall=153/202]eval:   1%|          | 61/5349 [00:19<20:45,  4.24it/s, mode=EVAL, recall=153/202]eval:   1%|          | 61/5349 [00:19<20:45,  4.24it/s, mode=EVAL, recall=153/205]eval:   1%|          | 62/5349 [00:19<20:44,  4.25it/s, mode=EVAL, recall=153/205]eval:   1%|          | 62/5349 [00:19<20:44,  4.25it/s, mode=EVAL, recall=155/208]eval:   1%|          | 63/5349 [00:19<20:45,  4.25it/s, mode=EVAL, recall=155/208]eval:   1%|          | 63/5349 [00:19<20:45,  4.25it/s, mode=EVAL, recall=155/211]eval:   1%|          | 64/5349 [00:19<20:43,  4.25it/s, mode=EVAL, recall=155/211]eval:   1%|          | 64/5349 [00:20<20:43,  4.25it/s, mode=EVAL, recall=156/214]eval:   1%|          | 65/5349 [00:20<20:41,  4.26it/s, mode=EVAL, recall=156/214]eval:   1%|          | 65/5349 [00:20<20:41,  4.26it/s, mode=EVAL, recall=157/217]eval:   1%|          | 66/5349 [00:20<20:42,  4.25it/s, mode=EVAL, recall=157/217]eval:   1%|          | 66/5349 [00:20<20:42,  4.25it/s, mode=EVAL, recall=158/219]eval:   1%|▏         | 67/5349 [00:20<20:41,  4.25it/s, mode=EVAL, recall=158/219]eval:   1%|▏         | 67/5349 [00:20<20:41,  4.25it/s, mode=EVAL, recall=159/221]eval:   1%|▏         | 68/5349 [00:20<20:40,  4.26it/s, mode=EVAL, recall=159/221]eval:   1%|▏         | 68/5349 [00:21<20:40,  4.26it/s, mode=EVAL, recall=159/222]eval:   1%|▏         | 69/5349 [00:21<20:39,  4.26it/s, mode=EVAL, recall=159/222]eval:   1%|▏         | 69/5349 [00:21<20:39,  4.26it/s, mode=EVAL, recall=160/223]eval:   1%|▏         | 70/5349 [00:21<20:40,  4.26it/s, mode=EVAL, recall=160/223]eval:   1%|▏         | 70/5349 [00:21<20:40,  4.26it/s, mode=EVAL, recall=161/224]eval:   1%|▏         | 71/5349 [00:21<20:40,  4.26it/s, mode=EVAL, recall=161/224]eval:   1%|▏         | 71/5349 [00:21<20:40,  4.26it/s, mode=EVAL, recall=162/225]eval:   1%|▏         | 72/5349 [00:21<20:38,  4.26it/s, mode=EVAL, recall=162/225]eval:   1%|▏         | 72/5349 [00:21<20:38,  4.26it/s, mode=EVAL, recall=164/227]eval:   1%|▏         | 73/5349 [00:21<20:38,  4.26it/s, mode=EVAL, recall=164/227]eval:   1%|▏         | 73/5349 [00:22<20:38,  4.26it/s, mode=EVAL, recall=166/229]eval:   1%|▏         | 74/5349 [00:22<20:38,  4.26it/s, mode=EVAL, recall=166/229]eval:   1%|▏         | 74/5349 [00:22<20:38,  4.26it/s, mode=EVAL, recall=168/231]eval:   1%|▏         | 75/5349 [00:22<20:38,  4.26it/s, mode=EVAL, recall=168/231]eval:   1%|▏         | 75/5349 [00:22<20:38,  4.26it/s, mode=EVAL, recall=170/233]eval:   1%|▏         | 76/5349 [00:22<20:40,  4.25it/s, mode=EVAL, recall=170/233]eval:   1%|▏         | 76/5349 [00:22<20:40,  4.25it/s, mode=EVAL, recall=173/236]eval:   1%|▏         | 77/5349 [00:22<20:37,  4.26it/s, mode=EVAL, recall=173/236]eval:   1%|▏         | 77/5349 [00:23<20:37,  4.26it/s, mode=EVAL, recall=177/241]eval:   1%|▏         | 78/5349 [00:23<20:37,  4.26it/s, mode=EVAL, recall=177/241]eval:   1%|▏         | 78/5349 [00:23<20:37,  4.26it/s, mode=EVAL, recall=180/245]eval:   1%|▏         | 79/5349 [00:23<20:37,  4.26it/s, mode=EVAL, recall=180/245]eval:   1%|▏         | 79/5349 [00:23<20:37,  4.26it/s, mode=EVAL, recall=183/250]eval:   1%|▏         | 80/5349 [00:23<20:37,  4.26it/s, mode=EVAL, recall=183/250]eval:   1%|▏         | 80/5349 [00:23<20:37,  4.26it/s, mode=EVAL, recall=188/256]eval:   2%|▏         | 81/5349 [00:23<20:37,  4.26it/s, mode=EVAL, recall=188/256]eval:   2%|▏         | 81/5349 [00:24<20:37,  4.26it/s, mode=EVAL, recall=192/262]eval:   2%|▏         | 82/5349 [00:24<20:36,  4.26it/s, mode=EVAL, recall=192/262]eval:   2%|▏         | 82/5349 [00:24<20:36,  4.26it/s, mode=EVAL, recall=196/268]eval:   2%|▏         | 83/5349 [00:24<20:36,  4.26it/s, mode=EVAL, recall=196/268]eval:   2%|▏         | 83/5349 [00:24<20:36,  4.26it/s, mode=EVAL, recall=200/275]eval:   2%|▏         | 84/5349 [00:24<20:35,  4.26it/s, mode=EVAL, recall=200/275]eval:   2%|▏         | 84/5349 [00:24<20:35,  4.26it/s, mode=EVAL, recall=203/282]eval:   2%|▏         | 85/5349 [00:24<20:35,  4.26it/s, mode=EVAL, recall=203/282]eval:   2%|▏         | 85/5349 [00:25<20:35,  4.26it/s, mode=EVAL, recall=207/289]eval:   2%|▏         | 86/5349 [00:25<20:34,  4.26it/s, mode=EVAL, recall=207/289]eval:   2%|▏         | 86/5349 [00:25<20:34,  4.26it/s, mode=EVAL, recall=210/296]eval:   2%|▏         | 87/5349 [00:25<20:33,  4.27it/s, mode=EVAL, recall=210/296]eval:   2%|▏         | 87/5349 [00:25<20:33,  4.27it/s, mode=EVAL, recall=214/303]eval:   2%|▏         | 88/5349 [00:25<20:36,  4.25it/s, mode=EVAL, recall=214/303]eval:   2%|▏         | 88/5349 [00:25<20:36,  4.25it/s, mode=EVAL, recall=219/311]eval:   2%|▏         | 89/5349 [00:25<20:39,  4.24it/s, mode=EVAL, recall=219/311]eval:   2%|▏         | 89/5349 [00:25<20:39,  4.24it/s, mode=EVAL, recall=223/319]eval:   2%|▏         | 90/5349 [00:25<20:39,  4.24it/s, mode=EVAL, recall=223/319]eval:   2%|▏         | 90/5349 [00:26<20:39,  4.24it/s, mode=EVAL, recall=227/327]eval:   2%|▏         | 91/5349 [00:26<20:38,  4.25it/s, mode=EVAL, recall=227/327]eval:   2%|▏         | 91/5349 [00:26<20:38,  4.25it/s, mode=EVAL, recall=231/335]eval:   2%|▏         | 92/5349 [00:26<20:37,  4.25it/s, mode=EVAL, recall=231/335]eval:   2%|▏         | 92/5349 [00:26<20:37,  4.25it/s, mode=EVAL, recall=236/343]eval:   2%|▏         | 93/5349 [00:26<20:36,  4.25it/s, mode=EVAL, recall=236/343]eval:   2%|▏         | 93/5349 [00:26<20:36,  4.25it/s, mode=EVAL, recall=243/351]eval:   2%|▏         | 94/5349 [00:26<20:36,  4.25it/s, mode=EVAL, recall=243/351]eval:   2%|▏         | 94/5349 [00:27<20:36,  4.25it/s, mode=EVAL, recall=249/358]eval:   2%|▏         | 95/5349 [00:27<20:34,  4.26it/s, mode=EVAL, recall=249/358]eval:   2%|▏         | 95/5349 [00:27<20:34,  4.26it/s, mode=EVAL, recall=255/365]eval:   2%|▏         | 96/5349 [00:27<20:34,  4.26it/s, mode=EVAL, recall=255/365]eval:   2%|▏         | 96/5349 [00:27<20:34,  4.26it/s, mode=EVAL, recall=261/372]eval:   2%|▏         | 97/5349 [00:27<20:32,  4.26it/s, mode=EVAL, recall=261/372]eval:   2%|▏         | 97/5349 [00:27<20:32,  4.26it/s, mode=EVAL, recall=268/379]eval:   2%|▏         | 98/5349 [00:27<20:31,  4.27it/s, mode=EVAL, recall=268/379]eval:   2%|▏         | 98/5349 [00:28<20:31,  4.27it/s, mode=EVAL, recall=273/385]eval:   2%|▏         | 99/5349 [00:28<20:30,  4.27it/s, mode=EVAL, recall=273/385]eval:   2%|▏         | 99/5349 [00:28<20:30,  4.27it/s, mode=EVAL, recall=277/393]eval:   2%|▏         | 100/5349 [00:28<20:28,  4.27it/s, mode=EVAL, recall=277/393]eval:   2%|▏         | 100/5349 [00:28<20:28,  4.27it/s, mode=EVAL, recall=283/402]eval:   2%|▏         | 101/5349 [00:28<20:35,  4.25it/s, mode=EVAL, recall=283/402]eval:   2%|▏         | 101/5349 [00:28<20:35,  4.25it/s, mode=EVAL, recall=289/410]eval:   2%|▏         | 102/5349 [00:28<20:37,  4.24it/s, mode=EVAL, recall=289/410]eval:   2%|▏         | 102/5349 [00:29<20:37,  4.24it/s, mode=EVAL, recall=295/420]eval:   2%|▏         | 103/5349 [00:29<20:38,  4.23it/s, mode=EVAL, recall=295/420]eval:   2%|▏         | 103/5349 [00:29<20:38,  4.23it/s, mode=EVAL, recall=302/429]eval:   2%|▏         | 104/5349 [00:29<20:34,  4.25it/s, mode=EVAL, recall=302/429]eval:   2%|▏         | 104/5349 [00:29<20:34,  4.25it/s, mode=EVAL, recall=310/439]eval:   2%|▏         | 105/5349 [00:29<20:34,  4.25it/s, mode=EVAL, recall=310/439]eval:   2%|▏         | 105/5349 [00:29<20:34,  4.25it/s, mode=EVAL, recall=318/449]eval:   2%|▏         | 106/5349 [00:29<20:34,  4.25it/s, mode=EVAL, recall=318/449]eval:   2%|▏         | 106/5349 [00:29<20:34,  4.25it/s, mode=EVAL, recall=324/458]eval:   2%|▏         | 107/5349 [00:29<20:34,  4.24it/s, mode=EVAL, recall=324/458]eval:   2%|▏         | 107/5349 [00:30<20:34,  4.24it/s, mode=EVAL, recall=333/467]eval:   2%|▏         | 108/5349 [00:30<20:33,  4.25it/s, mode=EVAL, recall=333/467]eval:   2%|▏         | 108/5349 [00:30<20:33,  4.25it/s, mode=EVAL, recall=338/475]eval:   2%|▏         | 109/5349 [00:30<20:33,  4.25it/s, mode=EVAL, recall=338/475]eval:   2%|▏         | 109/5349 [00:30<20:33,  4.25it/s, mode=EVAL, recall=344/483]eval:   2%|▏         | 110/5349 [00:30<20:33,  4.25it/s, mode=EVAL, recall=344/483]eval:   2%|▏         | 110/5349 [00:30<20:33,  4.25it/s, mode=EVAL, recall=350/491]eval:   2%|▏         | 111/5349 [00:30<20:33,  4.25it/s, mode=EVAL, recall=350/491]eval:   2%|▏         | 111/5349 [00:31<20:33,  4.25it/s, mode=EVAL, recall=357/499]eval:   2%|▏         | 112/5349 [00:31<20:32,  4.25it/s, mode=EVAL, recall=357/499]eval:   2%|▏         | 112/5349 [00:31<20:32,  4.25it/s, mode=EVAL, recall=363/506]eval:   2%|▏         | 113/5349 [00:31<20:31,  4.25it/s, mode=EVAL, recall=363/506]eval:   2%|▏         | 113/5349 [00:31<20:31,  4.25it/s, mode=EVAL, recall=369/513]eval:   2%|▏         | 114/5349 [00:31<20:30,  4.25it/s, mode=EVAL, recall=369/513]eval:   2%|▏         | 114/5349 [00:31<20:30,  4.25it/s, mode=EVAL, recall=376/520]eval:   2%|▏         | 115/5349 [00:31<20:30,  4.25it/s, mode=EVAL, recall=376/520]eval:   2%|▏         | 115/5349 [00:32<20:30,  4.25it/s, mode=EVAL, recall=380/525]eval:   2%|▏         | 116/5349 [00:32<20:29,  4.25it/s, mode=EVAL, recall=380/525]eval:   2%|▏         | 116/5349 [00:32<20:29,  4.25it/s, mode=EVAL, recall=384/530]eval:   2%|▏         | 117/5349 [00:32<20:28,  4.26it/s, mode=EVAL, recall=384/530]eval:   2%|▏         | 117/5349 [00:32<20:28,  4.26it/s, mode=EVAL, recall=389/536]eval:   2%|▏         | 118/5349 [00:32<20:30,  4.25it/s, mode=EVAL, recall=389/536]eval:   2%|▏         | 118/5349 [00:32<20:30,  4.25it/s, mode=EVAL, recall=394/542]eval:   2%|▏         | 119/5349 [00:32<20:30,  4.25it/s, mode=EVAL, recall=394/542]eval:   2%|▏         | 119/5349 [00:33<20:30,  4.25it/s, mode=EVAL, recall=400/548]eval:   2%|▏         | 120/5349 [00:33<20:30,  4.25it/s, mode=EVAL, recall=400/548]eval:   2%|▏         | 120/5349 [00:33<20:30,  4.25it/s, mode=EVAL, recall=406/556]eval:   2%|▏         | 121/5349 [00:33<20:28,  4.25it/s, mode=EVAL, recall=406/556]eval:   2%|▏         | 121/5349 [00:33<20:28,  4.25it/s, mode=EVAL, recall=413/565]eval:   2%|▏         | 122/5349 [00:33<20:28,  4.25it/s, mode=EVAL, recall=413/565]eval:   2%|▏         | 122/5349 [00:33<20:28,  4.25it/s, mode=EVAL, recall=420/574]eval:   2%|▏         | 123/5349 [00:33<20:27,  4.26it/s, mode=EVAL, recall=420/574]eval:   2%|▏         | 123/5349 [00:33<20:27,  4.26it/s, mode=EVAL, recall=427/583]eval:   2%|▏         | 124/5349 [00:33<20:27,  4.26it/s, mode=EVAL, recall=427/583]eval:   2%|▏         | 124/5349 [00:34<20:27,  4.26it/s, mode=EVAL, recall=434/592]eval:   2%|▏         | 125/5349 [00:34<20:26,  4.26it/s, mode=EVAL, recall=434/592]eval:   2%|▏         | 125/5349 [00:34<20:26,  4.26it/s, mode=EVAL, recall=441/600]eval:   2%|▏         | 126/5349 [00:34<20:28,  4.25it/s, mode=EVAL, recall=441/600]eval:   2%|▏         | 126/5349 [00:34<20:28,  4.25it/s, mode=EVAL, recall=448/608]eval:   2%|▏         | 127/5349 [00:34<20:27,  4.25it/s, mode=EVAL, recall=448/608]eval:   2%|▏         | 127/5349 [00:34<20:27,  4.25it/s, mode=EVAL, recall=454/616]eval:   2%|▏         | 128/5349 [00:34<20:26,  4.26it/s, mode=EVAL, recall=454/616]eval:   2%|▏         | 128/5349 [00:35<20:26,  4.26it/s, mode=EVAL, recall=458/623]eval:   2%|▏         | 129/5349 [00:35<20:26,  4.26it/s, mode=EVAL, recall=458/623]eval:   2%|▏         | 129/5349 [00:35<20:26,  4.26it/s, mode=EVAL, recall=462/632]eval:   2%|▏         | 130/5349 [00:35<20:27,  4.25it/s, mode=EVAL, recall=462/632]eval:   2%|▏         | 130/5349 [00:35<20:27,  4.25it/s, mode=EVAL, recall=467/639]eval:   2%|▏         | 131/5349 [00:35<20:25,  4.26it/s, mode=EVAL, recall=467/639]eval:   2%|▏         | 131/5349 [00:35<20:25,  4.26it/s, mode=EVAL, recall=473/646]eval:   2%|▏         | 132/5349 [00:35<20:24,  4.26it/s, mode=EVAL, recall=473/646]eval:   2%|▏         | 132/5349 [00:36<20:24,  4.26it/s, mode=EVAL, recall=478/653]eval:   2%|▏         | 133/5349 [00:36<20:24,  4.26it/s, mode=EVAL, recall=478/653]eval:   2%|▏         | 133/5349 [00:36<20:24,  4.26it/s, mode=EVAL, recall=484/660]eval:   3%|▎         | 134/5349 [00:36<20:24,  4.26it/s, mode=EVAL, recall=484/660]eval:   3%|▎         | 134/5349 [00:36<20:24,  4.26it/s, mode=EVAL, recall=489/667]eval:   3%|▎         | 135/5349 [00:36<20:23,  4.26it/s, mode=EVAL, recall=489/667]eval:   3%|▎         | 135/5349 [00:36<20:23,  4.26it/s, mode=EVAL, recall=494/673]eval:   3%|▎         | 136/5349 [00:36<20:22,  4.26it/s, mode=EVAL, recall=494/673]eval:   3%|▎         | 136/5349 [00:37<20:22,  4.26it/s, mode=EVAL, recall=499/680]eval:   3%|▎         | 137/5349 [00:37<20:22,  4.26it/s, mode=EVAL, recall=499/680]eval:   3%|▎         | 137/5349 [00:37<20:22,  4.26it/s, mode=EVAL, recall=505/688]eval:   3%|▎         | 138/5349 [00:37<20:22,  4.26it/s, mode=EVAL, recall=505/688]eval:   3%|▎         | 138/5349 [00:37<20:22,  4.26it/s, mode=EVAL, recall=511/695]eval:   3%|▎         | 139/5349 [00:37<20:27,  4.24it/s, mode=EVAL, recall=511/695]eval:   3%|▎         | 139/5349 [00:37<20:27,  4.24it/s, mode=EVAL, recall=516/701]eval:   3%|▎         | 140/5349 [00:37<20:26,  4.25it/s, mode=EVAL, recall=516/701]eval:   3%|▎         | 140/5349 [00:37<20:26,  4.25it/s, mode=EVAL, recall=520/708]eval:   3%|▎         | 141/5349 [00:37<20:25,  4.25it/s, mode=EVAL, recall=520/708]eval:   3%|▎         | 141/5349 [00:38<20:25,  4.25it/s, mode=EVAL, recall=525/714]eval:   3%|▎         | 142/5349 [00:38<20:25,  4.25it/s, mode=EVAL, recall=525/714]eval:   3%|▎         | 142/5349 [00:38<20:25,  4.25it/s, mode=EVAL, recall=529/720]eval:   3%|▎         | 143/5349 [00:38<20:27,  4.24it/s, mode=EVAL, recall=529/720]eval:   3%|▎         | 143/5349 [00:38<20:27,  4.24it/s, mode=EVAL, recall=534/726]eval:   3%|▎         | 144/5349 [00:38<20:23,  4.25it/s, mode=EVAL, recall=534/726]eval:   3%|▎         | 144/5349 [00:38<20:23,  4.25it/s, mode=EVAL, recall=540/733]eval:   3%|▎         | 145/5349 [00:38<20:22,  4.26it/s, mode=EVAL, recall=540/733]eval:   3%|▎         | 145/5349 [00:39<20:22,  4.26it/s, mode=EVAL, recall=546/743]eval:   3%|▎         | 146/5349 [00:39<20:22,  4.26it/s, mode=EVAL, recall=546/743]eval:   3%|▎         | 146/5349 [00:39<20:22,  4.26it/s, mode=EVAL, recall=553/752]eval:   3%|▎         | 147/5349 [00:39<20:20,  4.26it/s, mode=EVAL, recall=553/752]eval:   3%|▎         | 147/5349 [00:39<20:20,  4.26it/s, mode=EVAL, recall=560/760]eval:   3%|▎         | 148/5349 [00:39<20:20,  4.26it/s, mode=EVAL, recall=560/760]eval:   3%|▎         | 148/5349 [00:39<20:20,  4.26it/s, mode=EVAL, recall=569/770]eval:   3%|▎         | 149/5349 [00:39<20:20,  4.26it/s, mode=EVAL, recall=569/770]eval:   3%|▎         | 149/5349 [00:40<20:20,  4.26it/s, mode=EVAL, recall=577/780]eval:   3%|▎         | 150/5349 [00:40<20:23,  4.25it/s, mode=EVAL, recall=577/780]eval:   3%|▎         | 150/5349 [00:40<20:23,  4.25it/s, mode=EVAL, recall=585/789]eval:   3%|▎         | 151/5349 [00:40<20:22,  4.25it/s, mode=EVAL, recall=585/789]eval:   3%|▎         | 151/5349 [00:40<20:22,  4.25it/s, mode=EVAL, recall=592/797]eval:   3%|▎         | 152/5349 [00:40<20:22,  4.25it/s, mode=EVAL, recall=592/797]eval:   3%|▎         | 152/5349 [00:40<20:22,  4.25it/s, mode=EVAL, recall=599/805]eval:   3%|▎         | 153/5349 [00:40<20:21,  4.25it/s, mode=EVAL, recall=599/805]eval:   3%|▎         | 153/5349 [00:41<20:21,  4.25it/s, mode=EVAL, recall=606/813]eval:   3%|▎         | 154/5349 [00:41<20:24,  4.24it/s, mode=EVAL, recall=606/813]eval:   3%|▎         | 154/5349 [00:41<20:24,  4.24it/s, mode=EVAL, recall=611/820]eval:   3%|▎         | 155/5349 [00:41<20:27,  4.23it/s, mode=EVAL, recall=611/820]eval:   3%|▎         | 155/5349 [00:41<20:27,  4.23it/s, mode=EVAL, recall=617/828]eval:   3%|▎         | 156/5349 [00:41<20:24,  4.24it/s, mode=EVAL, recall=617/828]eval:   3%|▎         | 156/5349 [00:41<20:24,  4.24it/s, mode=EVAL, recall=623/837]eval:   3%|▎         | 157/5349 [00:41<20:22,  4.25it/s, mode=EVAL, recall=623/837]eval:   3%|▎         | 157/5349 [00:41<20:22,  4.25it/s, mode=EVAL, recall=627/846]eval:   3%|▎         | 158/5349 [00:41<20:21,  4.25it/s, mode=EVAL, recall=627/846]eval:   3%|▎         | 158/5349 [00:42<20:21,  4.25it/s, mode=EVAL, recall=634/856]eval:   3%|▎         | 159/5349 [00:42<20:22,  4.25it/s, mode=EVAL, recall=634/856]eval:   3%|▎         | 159/5349 [00:42<20:22,  4.25it/s, mode=EVAL, recall=641/866]eval:   3%|▎         | 160/5349 [00:42<20:23,  4.24it/s, mode=EVAL, recall=641/866]eval:   3%|▎         | 160/5349 [00:42<20:23,  4.24it/s, mode=EVAL, recall=650/879]eval:   3%|▎         | 161/5349 [00:42<20:21,  4.25it/s, mode=EVAL, recall=650/879]eval:   3%|▎         | 161/5349 [00:42<20:21,  4.25it/s, mode=EVAL, recall=660/892]eval:   3%|▎         | 162/5349 [00:42<20:20,  4.25it/s, mode=EVAL, recall=660/892]eval:   3%|▎         | 162/5349 [00:43<20:20,  4.25it/s, mode=EVAL, recall=669/905]eval:   3%|▎         | 163/5349 [00:43<20:19,  4.25it/s, mode=EVAL, recall=669/905]eval:   3%|▎         | 163/5349 [00:43<20:19,  4.25it/s, mode=EVAL, recall=675/919]eval:   3%|▎         | 164/5349 [00:43<20:18,  4.26it/s, mode=EVAL, recall=675/919]eval:   3%|▎         | 164/5349 [00:43<20:18,  4.26it/s, mode=EVAL, recall=682/932]eval:   3%|▎         | 165/5349 [00:43<20:16,  4.26it/s, mode=EVAL, recall=682/932]eval:   3%|▎         | 165/5349 [00:43<20:16,  4.26it/s, mode=EVAL, recall=689/944]eval:   3%|▎         | 166/5349 [00:43<20:17,  4.26it/s, mode=EVAL, recall=689/944]eval:   3%|▎         | 166/5349 [00:44<20:17,  4.26it/s, mode=EVAL, recall=696/956]eval:   3%|▎         | 167/5349 [00:44<20:19,  4.25it/s, mode=EVAL, recall=696/956]eval:   3%|▎         | 167/5349 [00:44<20:19,  4.25it/s, mode=EVAL, recall=705/969]eval:   3%|▎         | 168/5349 [00:44<20:18,  4.25it/s, mode=EVAL, recall=705/969]eval:   3%|▎         | 168/5349 [00:44<20:18,  4.25it/s, mode=EVAL, recall=713/981]eval:   3%|▎         | 169/5349 [00:44<20:18,  4.25it/s, mode=EVAL, recall=713/981]eval:   3%|▎         | 169/5349 [00:44<20:18,  4.25it/s, mode=EVAL, recall=721/993]eval:   3%|▎         | 170/5349 [00:44<20:18,  4.25it/s, mode=EVAL, recall=721/993]eval:   3%|▎         | 170/5349 [00:45<20:18,  4.25it/s, mode=EVAL, recall=729/1004]eval:   3%|▎         | 171/5349 [00:45<20:17,  4.25it/s, mode=EVAL, recall=729/1004]eval:   3%|▎         | 171/5349 [00:45<20:17,  4.25it/s, mode=EVAL, recall=738/1014]eval:   3%|▎         | 172/5349 [00:45<20:16,  4.26it/s, mode=EVAL, recall=738/1014]eval:   3%|▎         | 172/5349 [00:45<20:16,  4.26it/s, mode=EVAL, recall=747/1024]eval:   3%|▎         | 173/5349 [00:45<20:14,  4.26it/s, mode=EVAL, recall=747/1024]eval:   3%|▎         | 173/5349 [00:45<20:14,  4.26it/s, mode=EVAL, recall=754/1033]eval:   3%|▎         | 174/5349 [00:45<20:14,  4.26it/s, mode=EVAL, recall=754/1033]eval:   3%|▎         | 174/5349 [00:45<20:14,  4.26it/s, mode=EVAL, recall=764/1044]eval:   3%|▎         | 175/5349 [00:45<20:15,  4.26it/s, mode=EVAL, recall=764/1044]eval:   3%|▎         | 175/5349 [00:46<20:15,  4.26it/s, mode=EVAL, recall=773/1055]eval:   3%|▎         | 176/5349 [00:46<20:15,  4.26it/s, mode=EVAL, recall=773/1055]eval:   3%|▎         | 176/5349 [00:46<20:15,  4.26it/s, mode=EVAL, recall=781/1067]eval:   3%|▎         | 177/5349 [00:46<20:15,  4.25it/s, mode=EVAL, recall=781/1067]eval:   3%|▎         | 177/5349 [00:46<20:15,  4.25it/s, mode=EVAL, recall=790/1078]eval:   3%|▎         | 178/5349 [00:46<20:16,  4.25it/s, mode=EVAL, recall=790/1078]eval:   3%|▎         | 178/5349 [00:46<20:16,  4.25it/s, mode=EVAL, recall=801/1092]eval:   3%|▎         | 179/5349 [00:46<20:18,  4.24it/s, mode=EVAL, recall=801/1092]eval:   3%|▎         | 179/5349 [00:47<20:18,  4.24it/s, mode=EVAL, recall=811/1106]eval:   3%|▎         | 180/5349 [00:47<20:17,  4.25it/s, mode=EVAL, recall=811/1106]eval:   3%|▎         | 180/5349 [00:47<20:17,  4.25it/s, mode=EVAL, recall=822/1119]eval:   3%|▎         | 181/5349 [00:47<20:16,  4.25it/s, mode=EVAL, recall=822/1119]eval:   3%|▎         | 181/5349 [00:47<20:16,  4.25it/s, mode=EVAL, recall=832/1132]eval:   3%|▎         | 182/5349 [00:47<20:17,  4.24it/s, mode=EVAL, recall=832/1132]eval:   3%|▎         | 182/5349 [00:47<20:17,  4.24it/s, mode=EVAL, recall=841/1144]eval:   3%|▎         | 183/5349 [00:47<20:15,  4.25it/s, mode=EVAL, recall=841/1144]eval:   3%|▎         | 183/5349 [00:48<20:15,  4.25it/s, mode=EVAL, recall=849/1155]eval:   3%|▎         | 184/5349 [00:48<20:14,  4.25it/s, mode=EVAL, recall=849/1155]eval:   3%|▎         | 184/5349 [00:48<20:14,  4.25it/s, mode=EVAL, recall=857/1164]eval:   3%|▎         | 185/5349 [00:48<20:18,  4.24it/s, mode=EVAL, recall=857/1164]eval:   3%|▎         | 185/5349 [00:48<20:18,  4.24it/s, mode=EVAL, recall=864/1173]eval:   3%|▎         | 186/5349 [00:48<20:18,  4.24it/s, mode=EVAL, recall=864/1173]eval:   3%|▎         | 186/5349 [00:48<20:18,  4.24it/s, mode=EVAL, recall=872/1183]eval:   3%|▎         | 187/5349 [00:48<20:17,  4.24it/s, mode=EVAL, recall=872/1183]eval:   3%|▎         | 187/5349 [00:49<20:17,  4.24it/s, mode=EVAL, recall=880/1194]eval:   4%|▎         | 188/5349 [00:49<20:15,  4.24it/s, mode=EVAL, recall=880/1194]eval:   4%|▎         | 188/5349 [00:49<20:15,  4.24it/s, mode=EVAL, recall=889/1206]eval:   4%|▎         | 189/5349 [00:49<20:15,  4.25it/s, mode=EVAL, recall=889/1206]eval:   4%|▎         | 189/5349 [00:49<20:15,  4.25it/s, mode=EVAL, recall=896/1215]eval:   4%|▎         | 190/5349 [00:49<20:14,  4.25it/s, mode=EVAL, recall=896/1215]eval:   4%|▎         | 190/5349 [00:49<20:14,  4.25it/s, mode=EVAL, recall=904/1224]eval:   4%|▎         | 191/5349 [00:49<20:13,  4.25it/s, mode=EVAL, recall=904/1224]eval:   4%|▎         | 191/5349 [00:49<20:13,  4.25it/s, mode=EVAL, recall=911/1231]eval:   4%|▎         | 192/5349 [00:49<20:12,  4.25it/s, mode=EVAL, recall=911/1231]eval:   4%|▎         | 192/5349 [00:50<20:12,  4.25it/s, mode=EVAL, recall=918/1238]eval:   4%|▎         | 193/5349 [00:50<20:12,  4.25it/s, mode=EVAL, recall=918/1238]eval:   4%|▎         | 193/5349 [00:50<20:12,  4.25it/s, mode=EVAL, recall=924/1245]eval:   4%|▎         | 194/5349 [00:50<20:11,  4.26it/s, mode=EVAL, recall=924/1245]eval:   4%|▎         | 194/5349 [00:50<20:11,  4.26it/s, mode=EVAL, recall=930/1252]eval:   4%|▎         | 195/5349 [00:50<20:10,  4.26it/s, mode=EVAL, recall=930/1252]eval:   4%|▎         | 195/5349 [00:50<20:10,  4.26it/s, mode=EVAL, recall=935/1257]eval:   4%|▎         | 196/5349 [00:50<20:09,  4.26it/s, mode=EVAL, recall=935/1257]eval:   4%|▎         | 196/5349 [00:51<20:09,  4.26it/s, mode=EVAL, recall=939/1262]eval:   4%|▎         | 197/5349 [00:51<20:11,  4.25it/s, mode=EVAL, recall=939/1262]eval:   4%|▎         | 197/5349 [00:51<20:11,  4.25it/s, mode=EVAL, recall=944/1268]eval:   4%|▎         | 198/5349 [00:51<20:09,  4.26it/s, mode=EVAL, recall=944/1268]eval:   4%|▎         | 198/5349 [00:51<20:09,  4.26it/s, mode=EVAL, recall=949/1273]eval:   4%|▎         | 199/5349 [00:51<20:09,  4.26it/s, mode=EVAL, recall=949/1273]eval:   4%|▎         | 199/5349 [00:51<20:09,  4.26it/s, mode=EVAL, recall=953/1278]eval:   4%|▎         | 200/5349 [00:51<20:07,  4.26it/s, mode=EVAL, recall=953/1278]eval:   4%|▎         | 200/5349 [00:52<20:07,  4.26it/s, mode=EVAL, recall=956/1283]eval:   4%|▍         | 201/5349 [00:52<20:07,  4.26it/s, mode=EVAL, recall=956/1283]eval:   4%|▍         | 201/5349 [00:52<20:07,  4.26it/s, mode=EVAL, recall=961/1288]eval:   4%|▍         | 202/5349 [00:52<20:07,  4.26it/s, mode=EVAL, recall=961/1288]eval:   4%|▍         | 202/5349 [00:52<20:07,  4.26it/s, mode=EVAL, recall=964/1292]eval:   4%|▍         | 203/5349 [00:52<20:06,  4.27it/s, mode=EVAL, recall=964/1292]eval:   4%|▍         | 203/5349 [00:52<20:06,  4.27it/s, mode=EVAL, recall=968/1296]eval:   4%|▍         | 204/5349 [00:52<20:04,  4.27it/s, mode=EVAL, recall=968/1296]eval:   4%|▍         | 204/5349 [00:53<20:04,  4.27it/s, mode=EVAL, recall=972/1301]eval:   4%|▍         | 205/5349 [00:53<20:04,  4.27it/s, mode=EVAL, recall=972/1301]eval:   4%|▍         | 205/5349 [00:53<20:04,  4.27it/s, mode=EVAL, recall=974/1305]eval:   4%|▍         | 206/5349 [00:53<20:05,  4.27it/s, mode=EVAL, recall=974/1305]eval:   4%|▍         | 206/5349 [00:53<20:05,  4.27it/s, mode=EVAL, recall=977/1309]eval:   4%|▍         | 207/5349 [00:53<20:05,  4.26it/s, mode=EVAL, recall=977/1309]eval:   4%|▍         | 207/5349 [00:53<20:05,  4.26it/s, mode=EVAL, recall=978/1311]eval:   4%|▍         | 208/5349 [00:53<20:05,  4.27it/s, mode=EVAL, recall=978/1311]eval:   4%|▍         | 208/5349 [00:53<20:05,  4.27it/s, mode=EVAL, recall=979/1313]eval:   4%|▍         | 209/5349 [00:53<20:05,  4.26it/s, mode=EVAL, recall=979/1313]eval:   4%|▍         | 209/5349 [00:54<20:05,  4.26it/s, mode=EVAL, recall=979/1315]eval:   4%|▍         | 210/5349 [00:54<20:08,  4.25it/s, mode=EVAL, recall=979/1315]eval:   4%|▍         | 210/5349 [00:54<20:08,  4.25it/s, mode=EVAL, recall=982/1320]eval:   4%|▍         | 211/5349 [00:54<20:06,  4.26it/s, mode=EVAL, recall=982/1320]eval:   4%|▍         | 211/5349 [00:54<20:06,  4.26it/s, mode=EVAL, recall=983/1324]eval:   4%|▍         | 212/5349 [00:54<20:06,  4.26it/s, mode=EVAL, recall=983/1324]eval:   4%|▍         | 212/5349 [00:54<20:06,  4.26it/s, mode=EVAL, recall=984/1328]eval:   4%|▍         | 213/5349 [00:54<20:06,  4.26it/s, mode=EVAL, recall=984/1328]eval:   4%|▍         | 213/5349 [00:55<20:06,  4.26it/s, mode=EVAL, recall=985/1332]eval:   4%|▍         | 214/5349 [00:55<20:06,  4.26it/s, mode=EVAL, recall=985/1332]eval:   4%|▍         | 214/5349 [00:55<20:06,  4.26it/s, mode=EVAL, recall=986/1336]eval:   4%|▍         | 215/5349 [00:55<20:06,  4.26it/s, mode=EVAL, recall=986/1336]eval:   4%|▍         | 215/5349 [00:55<20:06,  4.26it/s, mode=EVAL, recall=988/1340]eval:   4%|▍         | 216/5349 [00:55<20:05,  4.26it/s, mode=EVAL, recall=988/1340]eval:   4%|▍         | 216/5349 [00:55<20:05,  4.26it/s, mode=EVAL, recall=990/1344]eval:   4%|▍         | 217/5349 [00:55<20:06,  4.25it/s, mode=EVAL, recall=990/1344]eval:   4%|▍         | 217/5349 [00:56<20:06,  4.25it/s, mode=EVAL, recall=992/1348]eval:   4%|▍         | 218/5349 [00:56<20:07,  4.25it/s, mode=EVAL, recall=992/1348]eval:   4%|▍         | 218/5349 [00:56<20:07,  4.25it/s, mode=EVAL, recall=993/1352]eval:   4%|▍         | 219/5349 [00:56<20:05,  4.25it/s, mode=EVAL, recall=993/1352]eval:   4%|▍         | 219/5349 [00:56<20:05,  4.25it/s, mode=EVAL, recall=994/1355]eval:   4%|▍         | 220/5349 [00:56<20:06,  4.25it/s, mode=EVAL, recall=994/1355]eval:   4%|▍         | 220/5349 [00:56<20:06,  4.25it/s, mode=EVAL, recall=995/1358]eval:   4%|▍         | 221/5349 [00:56<20:05,  4.25it/s, mode=EVAL, recall=995/1358]eval:   4%|▍         | 221/5349 [00:57<20:05,  4.25it/s, mode=EVAL, recall=995/1361]eval:   4%|▍         | 222/5349 [00:57<20:04,  4.26it/s, mode=EVAL, recall=995/1361]eval:   4%|▍         | 222/5349 [00:57<20:04,  4.26it/s, mode=EVAL, recall=997/1364]eval:   4%|▍         | 223/5349 [00:57<20:04,  4.25it/s, mode=EVAL, recall=997/1364]eval:   4%|▍         | 223/5349 [00:57<20:04,  4.25it/s, mode=EVAL, recall=998/1367]eval:   4%|▍         | 224/5349 [00:57<20:06,  4.25it/s, mode=EVAL, recall=998/1367]eval:   4%|▍         | 224/5349 [00:57<20:06,  4.25it/s, mode=EVAL, recall=999/1370]eval:   4%|▍         | 225/5349 [00:57<20:06,  4.25it/s, mode=EVAL, recall=999/1370]eval:   4%|▍         | 225/5349 [00:57<20:06,  4.25it/s, mode=EVAL, recall=999/1372]eval:   4%|▍         | 226/5349 [00:57<20:05,  4.25it/s, mode=EVAL, recall=999/1372]eval:   4%|▍         | 226/5349 [00:58<20:05,  4.25it/s, mode=EVAL, recall=999/1374]eval:   4%|▍         | 227/5349 [00:58<20:03,  4.25it/s, mode=EVAL, recall=999/1374]eval:   4%|▍         | 227/5349 [00:58<20:03,  4.25it/s, mode=EVAL, recall=999/1376]eval:   4%|▍         | 228/5349 [00:58<20:02,  4.26it/s, mode=EVAL, recall=999/1376]eval:   4%|▍         | 228/5349 [00:58<20:02,  4.26it/s, mode=EVAL, recall=999/1378]eval:   4%|▍         | 229/5349 [00:58<20:02,  4.26it/s, mode=EVAL, recall=999/1378]eval:   4%|▍         | 229/5349 [00:58<20:02,  4.26it/s, mode=EVAL, recall=999/1380]eval:   4%|▍         | 230/5349 [00:58<20:01,  4.26it/s, mode=EVAL, recall=999/1380]eval:   4%|▍         | 230/5349 [00:59<20:01,  4.26it/s, mode=EVAL, recall=999/1382]eval:   4%|▍         | 231/5349 [00:59<20:01,  4.26it/s, mode=EVAL, recall=999/1382]eval:   4%|▍         | 231/5349 [00:59<20:01,  4.26it/s, mode=EVAL, recall=999/1384]eval:   4%|▍         | 232/5349 [00:59<20:01,  4.26it/s, mode=EVAL, recall=999/1384]eval:   4%|▍         | 232/5349 [00:59<20:01,  4.26it/s, mode=EVAL, recall=999/1386]eval:   4%|▍         | 233/5349 [00:59<20:00,  4.26it/s, mode=EVAL, recall=999/1386]eval:   4%|▍         | 233/5349 [00:59<20:00,  4.26it/s, mode=EVAL, recall=999/1388]eval:   4%|▍         | 234/5349 [00:59<20:00,  4.26it/s, mode=EVAL, recall=999/1388]eval:   4%|▍         | 234/5349 [01:00<20:00,  4.26it/s, mode=EVAL, recall=999/1390]eval:   4%|▍         | 235/5349 [01:00<20:00,  4.26it/s, mode=EVAL, recall=999/1390]eval:   4%|▍         | 235/5349 [01:00<20:00,  4.26it/s, mode=EVAL, recall=999/1392]eval:   4%|▍         | 236/5349 [01:00<20:02,  4.25it/s, mode=EVAL, recall=999/1392]eval:   4%|▍         | 236/5349 [01:00<20:02,  4.25it/s, mode=EVAL, recall=999/1394]eval:   4%|▍         | 237/5349 [01:00<20:02,  4.25it/s, mode=EVAL, recall=999/1394]eval:   4%|▍         | 237/5349 [01:00<20:02,  4.25it/s, mode=EVAL, recall=999/1396]eval:   4%|▍         | 238/5349 [01:00<20:00,  4.26it/s, mode=EVAL, recall=999/1396]eval:   4%|▍         | 238/5349 [01:01<20:00,  4.26it/s, mode=EVAL, recall=999/1398]eval:   4%|▍         | 239/5349 [01:01<20:04,  4.24it/s, mode=EVAL, recall=999/1398]eval:   4%|▍         | 239/5349 [01:01<20:04,  4.24it/s, mode=EVAL, recall=999/1400]eval:   4%|▍         | 240/5349 [01:01<20:03,  4.24it/s, mode=EVAL, recall=999/1400]eval:   4%|▍         | 240/5349 [01:01<20:03,  4.24it/s, mode=EVAL, recall=999/1401]eval:   5%|▍         | 241/5349 [01:01<20:02,  4.25it/s, mode=EVAL, recall=999/1401]eval:   5%|▍         | 241/5349 [01:01<20:02,  4.25it/s, mode=EVAL, recall=999/1403]eval:   5%|▍         | 242/5349 [01:01<20:00,  4.26it/s, mode=EVAL, recall=999/1403]eval:   5%|▍         | 242/5349 [01:01<20:00,  4.26it/s, mode=EVAL, recall=999/1405]eval:   5%|▍         | 243/5349 [01:01<19:58,  4.26it/s, mode=EVAL, recall=999/1405]eval:   5%|▍         | 243/5349 [01:02<19:58,  4.26it/s, mode=EVAL, recall=999/1407]eval:   5%|▍         | 244/5349 [01:02<19:57,  4.26it/s, mode=EVAL, recall=999/1407]eval:   5%|▍         | 244/5349 [01:02<19:57,  4.26it/s, mode=EVAL, recall=999/1409]eval:   5%|▍         | 245/5349 [01:02<19:57,  4.26it/s, mode=EVAL, recall=999/1409]eval:   5%|▍         | 245/5349 [01:02<19:57,  4.26it/s, mode=EVAL, recall=999/1411]eval:   5%|▍         | 246/5349 [01:02<19:57,  4.26it/s, mode=EVAL, recall=999/1411]eval:   5%|▍         | 246/5349 [01:02<19:57,  4.26it/s, mode=EVAL, recall=999/1413]eval:   5%|▍         | 247/5349 [01:02<20:01,  4.25it/s, mode=EVAL, recall=999/1413]eval:   5%|▍         | 247/5349 [01:03<20:01,  4.25it/s, mode=EVAL, recall=999/1417]eval:   5%|▍         | 248/5349 [01:03<19:59,  4.25it/s, mode=EVAL, recall=999/1417]eval:   5%|▍         | 248/5349 [01:03<19:59,  4.25it/s, mode=EVAL, recall=999/1421]eval:   5%|▍         | 249/5349 [01:03<19:59,  4.25it/s, mode=EVAL, recall=999/1421]eval:   5%|▍         | 249/5349 [01:03<19:59,  4.25it/s, mode=EVAL, recall=999/1425]eval:   5%|▍         | 250/5349 [01:03<19:57,  4.26it/s, mode=EVAL, recall=999/1425]eval:   5%|▍         | 250/5349 [01:03<19:57,  4.26it/s, mode=EVAL, recall=999/1429]eval:   5%|▍         | 251/5349 [01:03<19:56,  4.26it/s, mode=EVAL, recall=999/1429]eval:   5%|▍         | 251/5349 [01:04<19:56,  4.26it/s, mode=EVAL, recall=999/1433]eval:   5%|▍         | 252/5349 [01:04<19:55,  4.26it/s, mode=EVAL, recall=999/1433]eval:   5%|▍         | 252/5349 [01:04<19:55,  4.26it/s, mode=EVAL, recall=999/1437]eval:   5%|▍         | 253/5349 [01:04<19:55,  4.26it/s, mode=EVAL, recall=999/1437]eval:   5%|▍         | 253/5349 [01:04<19:55,  4.26it/s, mode=EVAL, recall=999/1442]eval:   5%|▍         | 254/5349 [01:04<19:56,  4.26it/s, mode=EVAL, recall=999/1442]eval:   5%|▍         | 254/5349 [01:04<19:56,  4.26it/s, mode=EVAL, recall=999/1447]eval:   5%|▍         | 255/5349 [01:04<19:57,  4.25it/s, mode=EVAL, recall=999/1447]eval:   5%|▍         | 255/5349 [01:04<19:57,  4.25it/s, mode=EVAL, recall=999/1452]eval:   5%|▍         | 256/5349 [01:04<19:58,  4.25it/s, mode=EVAL, recall=999/1452]eval:   5%|▍         | 256/5349 [01:05<19:58,  4.25it/s, mode=EVAL, recall=999/1458]eval:   5%|▍         | 257/5349 [01:05<19:56,  4.26it/s, mode=EVAL, recall=999/1458]eval:   5%|▍         | 257/5349 [01:05<19:56,  4.26it/s, mode=EVAL, recall=999/1465]eval:   5%|▍         | 258/5349 [01:05<19:55,  4.26it/s, mode=EVAL, recall=999/1465]eval:   5%|▍         | 258/5349 [01:05<19:55,  4.26it/s, mode=EVAL, recall=999/1472]eval:   5%|▍         | 259/5349 [01:05<19:54,  4.26it/s, mode=EVAL, recall=999/1472]eval:   5%|▍         | 259/5349 [01:05<19:54,  4.26it/s, mode=EVAL, recall=999/1479]eval:   5%|▍         | 260/5349 [01:05<19:53,  4.26it/s, mode=EVAL, recall=999/1479]eval:   5%|▍         | 260/5349 [01:06<19:53,  4.26it/s, mode=EVAL, recall=999/1487]eval:   5%|▍         | 261/5349 [01:06<19:53,  4.26it/s, mode=EVAL, recall=999/1487]eval:   5%|▍         | 261/5349 [01:06<19:53,  4.26it/s, mode=EVAL, recall=999/1495]eval:   5%|▍         | 262/5349 [01:06<19:54,  4.26it/s, mode=EVAL, recall=999/1495]eval:   5%|▍         | 262/5349 [01:06<19:54,  4.26it/s, mode=EVAL, recall=999/1501]eval:   5%|▍         | 263/5349 [01:06<19:54,  4.26it/s, mode=EVAL, recall=999/1501]eval:   5%|▍         | 263/5349 [01:06<19:54,  4.26it/s, mode=EVAL, recall=999/1509]eval:   5%|▍         | 264/5349 [01:06<19:54,  4.26it/s, mode=EVAL, recall=999/1509]eval:   5%|▍         | 264/5349 [01:07<19:54,  4.26it/s, mode=EVAL, recall=999/1517]eval:   5%|▍         | 265/5349 [01:07<19:56,  4.25it/s, mode=EVAL, recall=999/1517]eval:   5%|▍         | 265/5349 [01:07<19:56,  4.25it/s, mode=EVAL, recall=999/1525]eval:   5%|▍         | 266/5349 [01:07<19:55,  4.25it/s, mode=EVAL, recall=999/1525]eval:   5%|▍         | 266/5349 [01:07<19:55,  4.25it/s, mode=EVAL, recall=1000/1534]eval:   5%|▍         | 267/5349 [01:07<19:54,  4.26it/s, mode=EVAL, recall=1000/1534]eval:   5%|▍         | 267/5349 [01:07<19:54,  4.26it/s, mode=EVAL, recall=1002/1543]eval:   5%|▌         | 268/5349 [01:07<19:54,  4.25it/s, mode=EVAL, recall=1002/1543]eval:   5%|▌         | 268/5349 [01:08<19:54,  4.25it/s, mode=EVAL, recall=1004/1552]eval:   5%|▌         | 269/5349 [01:08<19:51,  4.26it/s, mode=EVAL, recall=1004/1552]eval:   5%|▌         | 269/5349 [01:08<19:51,  4.26it/s, mode=EVAL, recall=1007/1561]eval:   5%|▌         | 270/5349 [01:08<19:51,  4.26it/s, mode=EVAL, recall=1007/1561]eval:   5%|▌         | 270/5349 [01:08<19:51,  4.26it/s, mode=EVAL, recall=1007/1570]eval:   5%|▌         | 271/5349 [01:08<19:50,  4.27it/s, mode=EVAL, recall=1007/1570]eval:   5%|▌         | 271/5349 [01:08<19:50,  4.27it/s, mode=EVAL, recall=1009/1579]eval:   5%|▌         | 272/5349 [01:08<19:51,  4.26it/s, mode=EVAL, recall=1009/1579]eval:   5%|▌         | 272/5349 [01:08<19:51,  4.26it/s, mode=EVAL, recall=1010/1588]eval:   5%|▌         | 273/5349 [01:08<19:54,  4.25it/s, mode=EVAL, recall=1010/1588]eval:   5%|▌         | 273/5349 [01:09<19:54,  4.25it/s, mode=EVAL, recall=1012/1597]eval:   5%|▌         | 274/5349 [01:09<19:52,  4.26it/s, mode=EVAL, recall=1012/1597]eval:   5%|▌         | 274/5349 [01:09<19:52,  4.26it/s, mode=EVAL, recall=1014/1606]eval:   5%|▌         | 275/5349 [01:09<19:56,  4.24it/s, mode=EVAL, recall=1014/1606]eval:   5%|▌         | 275/5349 [01:09<19:56,  4.24it/s, mode=EVAL, recall=1017/1615]eval:   5%|▌         | 276/5349 [01:09<19:54,  4.25it/s, mode=EVAL, recall=1017/1615]eval:   5%|▌         | 276/5349 [01:09<19:54,  4.25it/s, mode=EVAL, recall=1018/1624]eval:   5%|▌         | 277/5349 [01:09<19:54,  4.25it/s, mode=EVAL, recall=1018/1624]eval:   5%|▌         | 277/5349 [01:10<19:54,  4.25it/s, mode=EVAL, recall=1019/1633]eval:   5%|▌         | 278/5349 [01:10<19:57,  4.23it/s, mode=EVAL, recall=1019/1633]eval:   5%|▌         | 278/5349 [01:10<19:57,  4.23it/s, mode=EVAL, recall=1021/1641]eval:   5%|▌         | 279/5349 [01:10<19:55,  4.24it/s, mode=EVAL, recall=1021/1641]eval:   5%|▌         | 279/5349 [01:10<19:55,  4.24it/s, mode=EVAL, recall=1021/1649]eval:   5%|▌         | 280/5349 [01:10<19:53,  4.25it/s, mode=EVAL, recall=1021/1649]eval:   5%|▌         | 280/5349 [01:10<19:53,  4.25it/s, mode=EVAL, recall=1021/1657]eval:   5%|▌         | 281/5349 [01:10<19:51,  4.25it/s, mode=EVAL, recall=1021/1657]eval:   5%|▌         | 281/5349 [01:11<19:51,  4.25it/s, mode=EVAL, recall=1022/1666]eval:   5%|▌         | 282/5349 [01:11<19:51,  4.25it/s, mode=EVAL, recall=1022/1666]eval:   5%|▌         | 282/5349 [01:11<19:51,  4.25it/s, mode=EVAL, recall=1023/1675]eval:   5%|▌         | 283/5349 [01:11<19:50,  4.25it/s, mode=EVAL, recall=1023/1675]eval:   5%|▌         | 283/5349 [01:11<19:50,  4.25it/s, mode=EVAL, recall=1023/1684]eval:   5%|▌         | 284/5349 [01:11<19:54,  4.24it/s, mode=EVAL, recall=1023/1684]eval:   5%|▌         | 284/5349 [01:11<19:54,  4.24it/s, mode=EVAL, recall=1024/1693]eval:   5%|▌         | 285/5349 [01:11<19:52,  4.25it/s, mode=EVAL, recall=1024/1693]eval:   5%|▌         | 285/5349 [01:12<19:52,  4.25it/s, mode=EVAL, recall=1027/1700]eval:   5%|▌         | 286/5349 [01:12<19:51,  4.25it/s, mode=EVAL, recall=1027/1700]eval:   5%|▌         | 286/5349 [01:12<19:51,  4.25it/s, mode=EVAL, recall=1029/1707]eval:   5%|▌         | 287/5349 [01:12<19:50,  4.25it/s, mode=EVAL, recall=1029/1707]eval:   5%|▌         | 287/5349 [01:12<19:50,  4.25it/s, mode=EVAL, recall=1030/1714]eval:   5%|▌         | 288/5349 [01:12<19:53,  4.24it/s, mode=EVAL, recall=1030/1714]eval:   5%|▌         | 288/5349 [01:12<19:53,  4.24it/s, mode=EVAL, recall=1033/1721]eval:   5%|▌         | 289/5349 [01:12<19:52,  4.24it/s, mode=EVAL, recall=1033/1721]eval:   5%|▌         | 289/5349 [01:12<19:52,  4.24it/s, mode=EVAL, recall=1035/1728]eval:   5%|▌         | 290/5349 [01:12<19:50,  4.25it/s, mode=EVAL, recall=1035/1728]eval:   5%|▌         | 290/5349 [01:13<19:50,  4.25it/s, mode=EVAL, recall=1037/1735]eval:   5%|▌         | 291/5349 [01:13<19:50,  4.25it/s, mode=EVAL, recall=1037/1735]eval:   5%|▌         | 291/5349 [01:13<19:50,  4.25it/s, mode=EVAL, recall=1039/1741]eval:   5%|▌         | 292/5349 [01:13<19:54,  4.23it/s, mode=EVAL, recall=1039/1741]eval:   5%|▌         | 292/5349 [01:13<19:54,  4.23it/s, mode=EVAL, recall=1041/1747]eval:   5%|▌         | 293/5349 [01:13<19:52,  4.24it/s, mode=EVAL, recall=1041/1747]eval:   5%|▌         | 293/5349 [01:13<19:52,  4.24it/s, mode=EVAL, recall=1044/1754]eval:   5%|▌         | 294/5349 [01:13<19:51,  4.24it/s, mode=EVAL, recall=1044/1754]eval:   5%|▌         | 294/5349 [01:14<19:51,  4.24it/s, mode=EVAL, recall=1048/1761]eval:   6%|▌         | 295/5349 [01:14<19:50,  4.24it/s, mode=EVAL, recall=1048/1761]eval:   6%|▌         | 295/5349 [01:14<19:50,  4.24it/s, mode=EVAL, recall=1052/1768]eval:   6%|▌         | 296/5349 [01:14<19:49,  4.25it/s, mode=EVAL, recall=1052/1768]eval:   6%|▌         | 296/5349 [01:14<19:49,  4.25it/s, mode=EVAL, recall=1055/1775]eval:   6%|▌         | 297/5349 [01:14<19:48,  4.25it/s, mode=EVAL, recall=1055/1775]eval:   6%|▌         | 297/5349 [01:14<19:48,  4.25it/s, mode=EVAL, recall=1058/1782]eval:   6%|▌         | 298/5349 [01:14<19:48,  4.25it/s, mode=EVAL, recall=1058/1782]eval:   6%|▌         | 298/5349 [01:15<19:48,  4.25it/s, mode=EVAL, recall=1061/1789]eval:   6%|▌         | 299/5349 [01:15<19:46,  4.26it/s, mode=EVAL, recall=1061/1789]eval:   6%|▌         | 299/5349 [01:15<19:46,  4.26it/s, mode=EVAL, recall=1063/1796]eval:   6%|▌         | 300/5349 [01:15<19:45,  4.26it/s, mode=EVAL, recall=1063/1796]eval:   6%|▌         | 300/5349 [01:15<19:45,  4.26it/s, mode=EVAL, recall=1064/1806]eval:   6%|▌         | 301/5349 [01:15<19:46,  4.26it/s, mode=EVAL, recall=1064/1806]eval:   6%|▌         | 301/5349 [01:15<19:46,  4.26it/s, mode=EVAL, recall=1066/1815]eval:   6%|▌         | 302/5349 [01:15<19:47,  4.25it/s, mode=EVAL, recall=1066/1815]eval:   6%|▌         | 302/5349 [01:16<19:47,  4.25it/s, mode=EVAL, recall=1069/1823]eval:   6%|▌         | 303/5349 [01:16<19:45,  4.25it/s, mode=EVAL, recall=1069/1823]eval:   6%|▌         | 303/5349 [01:16<19:45,  4.25it/s, mode=EVAL, recall=1069/1832]eval:   6%|▌         | 304/5349 [01:16<19:44,  4.26it/s, mode=EVAL, recall=1069/1832]eval:   6%|▌         | 304/5349 [01:16<19:44,  4.26it/s, mode=EVAL, recall=1069/1840]eval:   6%|▌         | 305/5349 [01:16<19:44,  4.26it/s, mode=EVAL, recall=1069/1840]eval:   6%|▌         | 305/5349 [01:16<19:44,  4.26it/s, mode=EVAL, recall=1069/1848]eval:   6%|▌         | 306/5349 [01:16<19:44,  4.26it/s, mode=EVAL, recall=1069/1848]eval:   6%|▌         | 306/5349 [01:16<19:44,  4.26it/s, mode=EVAL, recall=1069/1855]eval:   6%|▌         | 307/5349 [01:16<19:46,  4.25it/s, mode=EVAL, recall=1069/1855]eval:   6%|▌         | 307/5349 [01:17<19:46,  4.25it/s, mode=EVAL, recall=1071/1863]eval:   6%|▌         | 308/5349 [01:17<19:46,  4.25it/s, mode=EVAL, recall=1071/1863]eval:   6%|▌         | 308/5349 [01:17<19:46,  4.25it/s, mode=EVAL, recall=1073/1871]eval:   6%|▌         | 309/5349 [01:17<19:46,  4.25it/s, mode=EVAL, recall=1073/1871]eval:   6%|▌         | 309/5349 [01:17<19:46,  4.25it/s, mode=EVAL, recall=1076/1882]eval:   6%|▌         | 310/5349 [01:17<19:45,  4.25it/s, mode=EVAL, recall=1076/1882]eval:   6%|▌         | 310/5349 [01:17<19:45,  4.25it/s, mode=EVAL, recall=1079/1891]eval:   6%|▌         | 311/5349 [01:17<19:45,  4.25it/s, mode=EVAL, recall=1079/1891]eval:   6%|▌         | 311/5349 [01:18<19:45,  4.25it/s, mode=EVAL, recall=1081/1900]eval:   6%|▌         | 312/5349 [01:18<19:45,  4.25it/s, mode=EVAL, recall=1081/1900]eval:   6%|▌         | 312/5349 [01:18<19:45,  4.25it/s, mode=EVAL, recall=1085/1909]eval:   6%|▌         | 313/5349 [01:18<19:46,  4.24it/s, mode=EVAL, recall=1085/1909]eval:   6%|▌         | 313/5349 [01:18<19:46,  4.24it/s, mode=EVAL, recall=1092/1918]eval:   6%|▌         | 314/5349 [01:18<19:46,  4.24it/s, mode=EVAL, recall=1092/1918]eval:   6%|▌         | 314/5349 [01:18<19:46,  4.24it/s, mode=EVAL, recall=1098/1927]eval:   6%|▌         | 315/5349 [01:18<19:45,  4.25it/s, mode=EVAL, recall=1098/1927]eval:   6%|▌         | 315/5349 [01:19<19:45,  4.25it/s, mode=EVAL, recall=1104/1936]eval:   6%|▌         | 316/5349 [01:19<19:48,  4.23it/s, mode=EVAL, recall=1104/1936]eval:   6%|▌         | 316/5349 [01:19<19:48,  4.23it/s, mode=EVAL, recall=1108/1944]eval:   6%|▌         | 317/5349 [01:19<19:52,  4.22it/s, mode=EVAL, recall=1108/1944]eval:   6%|▌         | 317/5349 [01:19<19:52,  4.22it/s, mode=EVAL, recall=1111/1953]eval:   6%|▌         | 318/5349 [01:19<19:50,  4.23it/s, mode=EVAL, recall=1111/1953]eval:   6%|▌         | 318/5349 [01:19<19:50,  4.23it/s, mode=EVAL, recall=1117/1963]eval:   6%|▌         | 319/5349 [01:19<19:47,  4.23it/s, mode=EVAL, recall=1117/1963]eval:   6%|▌         | 319/5349 [01:20<19:47,  4.23it/s, mode=EVAL, recall=1121/1973]eval:   6%|▌         | 320/5349 [01:20<19:45,  4.24it/s, mode=EVAL, recall=1121/1973]eval:   6%|▌         | 320/5349 [01:20<19:45,  4.24it/s, mode=EVAL, recall=1125/1982]eval:   6%|▌         | 321/5349 [01:20<19:44,  4.24it/s, mode=EVAL, recall=1125/1982]eval:   6%|▌         | 321/5349 [01:20<19:44,  4.24it/s, mode=EVAL, recall=1131/1992]eval:   6%|▌         | 322/5349 [01:20<19:44,  4.24it/s, mode=EVAL, recall=1131/1992]eval:   6%|▌         | 322/5349 [01:20<19:44,  4.24it/s, mode=EVAL, recall=1136/2002]eval:   6%|▌         | 323/5349 [01:20<19:44,  4.24it/s, mode=EVAL, recall=1136/2002]eval:   6%|▌         | 323/5349 [01:20<19:44,  4.24it/s, mode=EVAL, recall=1142/2012]eval:   6%|▌         | 324/5349 [01:20<19:44,  4.24it/s, mode=EVAL, recall=1142/2012]eval:   6%|▌         | 324/5349 [01:21<19:44,  4.24it/s, mode=EVAL, recall=1147/2021]eval:   6%|▌         | 325/5349 [01:21<19:43,  4.25it/s, mode=EVAL, recall=1147/2021]eval:   6%|▌         | 325/5349 [01:21<19:43,  4.25it/s, mode=EVAL, recall=1151/2031]eval:   6%|▌         | 326/5349 [01:21<19:42,  4.25it/s, mode=EVAL, recall=1151/2031]eval:   6%|▌         | 326/5349 [01:21<19:42,  4.25it/s, mode=EVAL, recall=1154/2043]eval:   6%|▌         | 327/5349 [01:21<19:42,  4.25it/s, mode=EVAL, recall=1154/2043]eval:   6%|▌         | 327/5349 [01:21<19:42,  4.25it/s, mode=EVAL, recall=1159/2054]eval:   6%|▌         | 328/5349 [01:21<19:44,  4.24it/s, mode=EVAL, recall=1159/2054]eval:   6%|▌         | 328/5349 [01:22<19:44,  4.24it/s, mode=EVAL, recall=1162/2065]eval:   6%|▌         | 329/5349 [01:22<19:44,  4.24it/s, mode=EVAL, recall=1162/2065]eval:   6%|▌         | 329/5349 [01:22<19:44,  4.24it/s, mode=EVAL, recall=1166/2075]eval:   6%|▌         | 330/5349 [01:22<19:42,  4.24it/s, mode=EVAL, recall=1166/2075]eval:   6%|▌         | 330/5349 [01:22<19:42,  4.24it/s, mode=EVAL, recall=1171/2084]eval:   6%|▌         | 331/5349 [01:22<19:41,  4.25it/s, mode=EVAL, recall=1171/2084]eval:   6%|▌         | 331/5349 [01:22<19:41,  4.25it/s, mode=EVAL, recall=1174/2093]eval:   6%|▌         | 332/5349 [01:22<19:40,  4.25it/s, mode=EVAL, recall=1174/2093]eval:   6%|▌         | 332/5349 [01:23<19:40,  4.25it/s, mode=EVAL, recall=1178/2102]eval:   6%|▌         | 333/5349 [01:23<19:40,  4.25it/s, mode=EVAL, recall=1178/2102]eval:   6%|▌         | 333/5349 [01:23<19:40,  4.25it/s, mode=EVAL, recall=1182/2109]eval:   6%|▌         | 334/5349 [01:23<19:45,  4.23it/s, mode=EVAL, recall=1182/2109]eval:   6%|▌         | 334/5349 [01:23<19:45,  4.23it/s, mode=EVAL, recall=1183/2117]eval:   6%|▋         | 335/5349 [01:23<19:43,  4.24it/s, mode=EVAL, recall=1183/2117]eval:   6%|▋         | 335/5349 [01:23<19:43,  4.24it/s, mode=EVAL, recall=1188/2125]eval:   6%|▋         | 336/5349 [01:23<19:42,  4.24it/s, mode=EVAL, recall=1188/2125]eval:   6%|▋         | 336/5349 [01:24<19:42,  4.24it/s, mode=EVAL, recall=1191/2132]eval:   6%|▋         | 337/5349 [01:24<19:41,  4.24it/s, mode=EVAL, recall=1191/2132]eval:   6%|▋         | 337/5349 [01:24<19:41,  4.24it/s, mode=EVAL, recall=1192/2138]eval:   6%|▋         | 338/5349 [01:24<19:40,  4.25it/s, mode=EVAL, recall=1192/2138]eval:   6%|▋         | 338/5349 [01:24<19:40,  4.25it/s, mode=EVAL, recall=1193/2143]eval:   6%|▋         | 339/5349 [01:24<19:38,  4.25it/s, mode=EVAL, recall=1193/2143]eval:   6%|▋         | 339/5349 [01:24<19:38,  4.25it/s, mode=EVAL, recall=1194/2148]eval:   6%|▋         | 340/5349 [01:24<19:37,  4.25it/s, mode=EVAL, recall=1194/2148]eval:   6%|▋         | 340/5349 [01:25<19:37,  4.25it/s, mode=EVAL, recall=1195/2153]eval:   6%|▋         | 341/5349 [01:25<19:36,  4.26it/s, mode=EVAL, recall=1195/2153]eval:   6%|▋         | 341/5349 [01:25<19:36,  4.26it/s, mode=EVAL, recall=1195/2158]eval:   6%|▋         | 342/5349 [01:25<19:35,  4.26it/s, mode=EVAL, recall=1195/2158]eval:   6%|▋         | 342/5349 [01:25<19:35,  4.26it/s, mode=EVAL, recall=1195/2163]eval:   6%|▋         | 343/5349 [01:25<19:39,  4.25it/s, mode=EVAL, recall=1195/2163]eval:   6%|▋         | 343/5349 [01:25<19:39,  4.25it/s, mode=EVAL, recall=1196/2168]eval:   6%|▋         | 344/5349 [01:25<19:39,  4.24it/s, mode=EVAL, recall=1196/2168]eval:   6%|▋         | 344/5349 [01:25<19:39,  4.24it/s, mode=EVAL, recall=1196/2174]eval:   6%|▋         | 345/5349 [01:25<19:38,  4.25it/s, mode=EVAL, recall=1196/2174]eval:   6%|▋         | 345/5349 [01:26<19:38,  4.25it/s, mode=EVAL, recall=1196/2182]eval:   6%|▋         | 346/5349 [01:26<19:38,  4.24it/s, mode=EVAL, recall=1196/2182]eval:   6%|▋         | 346/5349 [01:26<19:38,  4.24it/s, mode=EVAL, recall=1196/2189]eval:   6%|▋         | 347/5349 [01:26<19:38,  4.24it/s, mode=EVAL, recall=1196/2189]eval:   6%|▋         | 347/5349 [01:26<19:38,  4.24it/s, mode=EVAL, recall=1196/2196]eval:   7%|▋         | 348/5349 [01:26<19:37,  4.25it/s, mode=EVAL, recall=1196/2196]eval:   7%|▋         | 348/5349 [01:26<19:37,  4.25it/s, mode=EVAL, recall=1196/2203]eval:   7%|▋         | 349/5349 [01:26<19:38,  4.24it/s, mode=EVAL, recall=1196/2203]eval:   7%|▋         | 349/5349 [01:27<19:38,  4.24it/s, mode=EVAL, recall=1196/2209]eval:   7%|▋         | 350/5349 [01:27<19:38,  4.24it/s, mode=EVAL, recall=1196/2209]eval:   7%|▋         | 350/5349 [01:27<19:38,  4.24it/s, mode=EVAL, recall=1196/2215]eval:   7%|▋         | 351/5349 [01:27<19:39,  4.24it/s, mode=EVAL, recall=1196/2215]eval:   7%|▋         | 351/5349 [01:27<19:39,  4.24it/s, mode=EVAL, recall=1196/2221]eval:   7%|▋         | 352/5349 [01:27<19:38,  4.24it/s, mode=EVAL, recall=1196/2221]eval:   7%|▋         | 352/5349 [01:27<19:38,  4.24it/s, mode=EVAL, recall=1196/2226]eval:   7%|▋         | 353/5349 [01:27<19:39,  4.24it/s, mode=EVAL, recall=1196/2226]eval:   7%|▋         | 353/5349 [01:28<19:39,  4.24it/s, mode=EVAL, recall=1196/2231]eval:   7%|▋         | 354/5349 [01:28<19:39,  4.24it/s, mode=EVAL, recall=1196/2231]eval:   7%|▋         | 354/5349 [01:28<19:39,  4.24it/s, mode=EVAL, recall=1196/2236]eval:   7%|▋         | 355/5349 [01:28<19:38,  4.24it/s, mode=EVAL, recall=1196/2236]eval:   7%|▋         | 355/5349 [01:28<19:38,  4.24it/s, mode=EVAL, recall=1196/2241]eval:   7%|▋         | 356/5349 [01:28<19:37,  4.24it/s, mode=EVAL, recall=1196/2241]eval:   7%|▋         | 356/5349 [01:28<19:37,  4.24it/s, mode=EVAL, recall=1196/2246]eval:   7%|▋         | 357/5349 [01:28<19:39,  4.23it/s, mode=EVAL, recall=1196/2246]eval:   7%|▋         | 357/5349 [01:29<19:39,  4.23it/s, mode=EVAL, recall=1196/2251]eval:   7%|▋         | 358/5349 [01:29<19:39,  4.23it/s, mode=EVAL, recall=1196/2251]eval:   7%|▋         | 358/5349 [01:29<19:39,  4.23it/s, mode=EVAL, recall=1196/2256]eval:   7%|▋         | 359/5349 [01:29<19:38,  4.24it/s, mode=EVAL, recall=1196/2256]eval:   7%|▋         | 359/5349 [01:29<19:38,  4.24it/s, mode=EVAL, recall=1196/2261]eval:   7%|▋         | 360/5349 [01:29<19:35,  4.24it/s, mode=EVAL, recall=1196/2261]eval:   7%|▋         | 360/5349 [01:29<19:35,  4.24it/s, mode=EVAL, recall=1196/2266]eval:   7%|▋         | 361/5349 [01:29<19:35,  4.24it/s, mode=EVAL, recall=1196/2266]eval:   7%|▋         | 361/5349 [01:29<19:35,  4.24it/s, mode=EVAL, recall=1196/2270]eval:   7%|▋         | 362/5349 [01:29<19:33,  4.25it/s, mode=EVAL, recall=1196/2270]eval:   7%|▋         | 362/5349 [01:30<19:33,  4.25it/s, mode=EVAL, recall=1196/2274]eval:   7%|▋         | 363/5349 [01:30<19:32,  4.25it/s, mode=EVAL, recall=1196/2274]eval:   7%|▋         | 363/5349 [01:30<19:32,  4.25it/s, mode=EVAL, recall=1196/2278]eval:   7%|▋         | 364/5349 [01:30<19:31,  4.25it/s, mode=EVAL, recall=1196/2278]eval:   7%|▋         | 364/5349 [01:30<19:31,  4.25it/s, mode=EVAL, recall=1196/2282]eval:   7%|▋         | 365/5349 [01:30<19:30,  4.26it/s, mode=EVAL, recall=1196/2282]eval:   7%|▋         | 365/5349 [01:30<19:30,  4.26it/s, mode=EVAL, recall=1196/2285]eval:   7%|▋         | 366/5349 [01:30<19:29,  4.26it/s, mode=EVAL, recall=1196/2285]eval:   7%|▋         | 366/5349 [01:31<19:29,  4.26it/s, mode=EVAL, recall=1196/2289]eval:   7%|▋         | 367/5349 [01:31<19:28,  4.26it/s, mode=EVAL, recall=1196/2289]eval:   7%|▋         | 367/5349 [01:31<19:28,  4.26it/s, mode=EVAL, recall=1196/2292]eval:   7%|▋         | 368/5349 [01:31<19:28,  4.26it/s, mode=EVAL, recall=1196/2292]eval:   7%|▋         | 368/5349 [01:31<19:28,  4.26it/s, mode=EVAL, recall=1196/2295]eval:   7%|▋         | 369/5349 [01:31<19:28,  4.26it/s, mode=EVAL, recall=1196/2295]eval:   7%|▋         | 369/5349 [01:31<19:28,  4.26it/s, mode=EVAL, recall=1196/2298]eval:   7%|▋         | 370/5349 [01:31<19:30,  4.25it/s, mode=EVAL, recall=1196/2298]eval:   7%|▋         | 370/5349 [01:32<19:30,  4.25it/s, mode=EVAL, recall=1196/2301]eval:   7%|▋         | 371/5349 [01:32<19:29,  4.26it/s, mode=EVAL, recall=1196/2301]eval:   7%|▋         | 371/5349 [01:32<19:29,  4.26it/s, mode=EVAL, recall=1196/2304]eval:   7%|▋         | 372/5349 [01:32<19:29,  4.26it/s, mode=EVAL, recall=1196/2304]eval:   7%|▋         | 372/5349 [01:32<19:29,  4.26it/s, mode=EVAL, recall=1197/2307]eval:   7%|▋         | 373/5349 [01:32<19:29,  4.25it/s, mode=EVAL, recall=1197/2307]eval:   7%|▋         | 373/5349 [01:32<19:29,  4.25it/s, mode=EVAL, recall=1197/2310]eval:   7%|▋         | 374/5349 [01:32<19:28,  4.26it/s, mode=EVAL, recall=1197/2310]eval:   7%|▋         | 374/5349 [01:33<19:28,  4.26it/s, mode=EVAL, recall=1197/2313]eval:   7%|▋         | 375/5349 [01:33<19:29,  4.25it/s, mode=EVAL, recall=1197/2313]eval:   7%|▋         | 375/5349 [01:33<19:29,  4.25it/s, mode=EVAL, recall=1197/2316]eval:   7%|▋         | 376/5349 [01:33<19:29,  4.25it/s, mode=EVAL, recall=1197/2316]eval:   7%|▋         | 376/5349 [01:33<19:29,  4.25it/s, mode=EVAL, recall=1198/2319]eval:   7%|▋         | 377/5349 [01:33<19:28,  4.26it/s, mode=EVAL, recall=1198/2319]eval:   7%|▋         | 377/5349 [01:33<19:28,  4.26it/s, mode=EVAL, recall=1199/2321]eval:   7%|▋         | 378/5349 [01:33<19:29,  4.25it/s, mode=EVAL, recall=1199/2321]eval:   7%|▋         | 378/5349 [01:33<19:29,  4.25it/s, mode=EVAL, recall=1200/2323]eval:   7%|▋         | 379/5349 [01:33<19:31,  4.24it/s, mode=EVAL, recall=1200/2323]eval:   7%|▋         | 379/5349 [01:34<19:31,  4.24it/s, mode=EVAL, recall=1202/2325]eval:   7%|▋         | 380/5349 [01:34<19:29,  4.25it/s, mode=EVAL, recall=1202/2325]eval:   7%|▋         | 380/5349 [01:34<19:29,  4.25it/s, mode=EVAL, recall=1203/2327]eval:   7%|▋         | 381/5349 [01:34<19:28,  4.25it/s, mode=EVAL, recall=1203/2327]eval:   7%|▋         | 381/5349 [01:34<19:28,  4.25it/s, mode=EVAL, recall=1203/2329]eval:   7%|▋         | 382/5349 [01:34<19:26,  4.26it/s, mode=EVAL, recall=1203/2329]eval:   7%|▋         | 382/5349 [01:34<19:26,  4.26it/s, mode=EVAL, recall=1204/2331]eval:   7%|▋         | 383/5349 [01:34<19:26,  4.26it/s, mode=EVAL, recall=1204/2331]eval:   7%|▋         | 383/5349 [01:35<19:26,  4.26it/s, mode=EVAL, recall=1205/2333]eval:   7%|▋         | 384/5349 [01:35<19:26,  4.26it/s, mode=EVAL, recall=1205/2333]eval:   7%|▋         | 384/5349 [01:35<19:26,  4.26it/s, mode=EVAL, recall=1206/2335]eval:   7%|▋         | 385/5349 [01:35<19:25,  4.26it/s, mode=EVAL, recall=1206/2335]eval:   7%|▋         | 385/5349 [01:35<19:25,  4.26it/s, mode=EVAL, recall=1206/2337]eval:   7%|▋         | 386/5349 [01:35<19:24,  4.26it/s, mode=EVAL, recall=1206/2337]eval:   7%|▋         | 386/5349 [01:35<19:24,  4.26it/s, mode=EVAL, recall=1206/2339]eval:   7%|▋         | 387/5349 [01:35<19:18,  4.28it/s, mode=EVAL, recall=1206/2339]eval:   7%|▋         | 387/5349 [01:36<19:18,  4.28it/s, mode=EVAL, recall=1206/2341]eval:   7%|▋         | 388/5349 [01:36<19:20,  4.27it/s, mode=EVAL, recall=1206/2341]eval:   7%|▋         | 388/5349 [01:36<19:20,  4.27it/s, mode=EVAL, recall=1206/2342]eval:   7%|▋         | 389/5349 [01:36<19:21,  4.27it/s, mode=EVAL, recall=1206/2342]eval:   7%|▋         | 389/5349 [01:36<19:21,  4.27it/s, mode=EVAL, recall=1206/2343]eval:   7%|▋         | 390/5349 [01:36<19:22,  4.27it/s, mode=EVAL, recall=1206/2343]eval:   7%|▋         | 390/5349 [01:36<19:22,  4.27it/s, mode=EVAL, recall=1207/2344]eval:   7%|▋         | 391/5349 [01:36<19:22,  4.27it/s, mode=EVAL, recall=1207/2344]eval:   7%|▋         | 391/5349 [01:36<19:22,  4.27it/s, mode=EVAL, recall=1207/2345]eval:   7%|▋         | 392/5349 [01:36<19:16,  4.29it/s, mode=EVAL, recall=1207/2345]eval:   7%|▋         | 392/5349 [01:37<19:16,  4.29it/s, mode=EVAL, recall=1207/2346]eval:   7%|▋         | 393/5349 [01:37<19:20,  4.27it/s, mode=EVAL, recall=1207/2346]eval:   7%|▋         | 393/5349 [01:37<19:20,  4.27it/s, mode=EVAL, recall=1207/2347]eval:   7%|▋         | 394/5349 [01:37<19:15,  4.29it/s, mode=EVAL, recall=1207/2347]eval:   7%|▋         | 394/5349 [01:37<19:15,  4.29it/s, mode=EVAL, recall=1207/2348]eval:   7%|▋         | 395/5349 [01:37<19:17,  4.28it/s, mode=EVAL, recall=1207/2348]eval:   7%|▋         | 395/5349 [01:37<19:17,  4.28it/s, mode=EVAL, recall=1207/2349]eval:   7%|▋         | 396/5349 [01:37<19:13,  4.30it/s, mode=EVAL, recall=1207/2349]eval:   7%|▋         | 396/5349 [01:38<19:13,  4.30it/s, mode=EVAL, recall=1207/2350]eval:   7%|▋         | 397/5349 [01:38<19:13,  4.29it/s, mode=EVAL, recall=1207/2350]eval:   7%|▋         | 397/5349 [01:38<19:13,  4.29it/s, mode=EVAL, recall=1207/2351]eval:   7%|▋         | 398/5349 [01:38<19:20,  4.27it/s, mode=EVAL, recall=1207/2351]eval:   7%|▋         | 398/5349 [01:38<19:20,  4.27it/s, mode=EVAL, recall=1208/2352]eval:   7%|▋         | 399/5349 [01:38<19:22,  4.26it/s, mode=EVAL, recall=1208/2352]eval:   7%|▋         | 399/5349 [01:38<19:22,  4.26it/s, mode=EVAL, recall=1208/2353]eval:   7%|▋         | 400/5349 [01:38<19:16,  4.28it/s, mode=EVAL, recall=1208/2353]eval:   7%|▋         | 400/5349 [01:39<19:16,  4.28it/s, mode=EVAL, recall=1210/2355]eval:   7%|▋         | 401/5349 [01:39<19:12,  4.29it/s, mode=EVAL, recall=1210/2355](1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0005.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0006.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0007.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0008.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0009.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0011.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0012.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0013.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0014.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0015.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0016.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0017.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0019.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0020.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0022.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0023.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0025.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0028.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0029.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0030.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0031.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0032.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0034.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0035.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0036.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0038.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0040.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0041.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0042.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0043.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0045.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0046.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0047.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0052.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0053.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0054.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0055.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0059.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0060.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0061.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0062.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0064.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0065.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0066.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0067.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0069.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0072.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0073.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0075.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0076.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0077.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0079.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0080.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0081.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0082.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0083.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0086.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0088.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0090.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0091.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0092.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0093.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0094.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0095.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0096.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0097.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0101.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0001_0102.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0109.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0110.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0111.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0112.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0113.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0114.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0115.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0116.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0118.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0121.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0122.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0124.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0126.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0128.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0129.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0130.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0133.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0134.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0135.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0137.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0138.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0139.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0140.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0141.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0142.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0143.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0144.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0145.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0146.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0005_0148.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0005.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0007.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0009.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0010.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0011.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0013.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0014.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0015.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0016.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0017.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0018.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0019.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0020.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0021.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0022.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0023.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0024.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0028.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0029.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0031.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0032.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0033.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0034.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0035.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0036.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0038.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0040.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0041.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0042.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0043.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0044.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0045.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0046.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0047.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0049.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0050.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0051.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0052.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0053.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0055.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0056.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0057.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0059.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0060.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0061.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0063.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0064.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0065.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0066.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0067.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0069.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0070.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0072.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0073.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0074.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0076.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0077.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0078.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0079.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0080.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0081.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0082.npy'>
+(1, 13, 7) (1, 13, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0085.npy'>
+(1, 13, 7) (1, 13, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0086.npy'>
+(1, 13, 7) (1, 13, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0088.npy'>
+(1, 14, 7) (1, 14, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0090.npy'>
+(1, 13, 7) (1, 13, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0091.npy'>
+(1, 12, 7) (1, 12, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0092.npy'>
+(1, 12, 7) (1, 12, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0093.npy'>
+(1, 13, 7) (1, 13, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0095.npy'>
+(1, 12, 7) (1, 12, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0097.npy'>
+(1, 12, 7) (1, 12, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0099.npy'>
+(1, 11, 7) (1, 11, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0100.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0101.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0102.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0104.npy'>
+(1, 11, 7) (1, 11, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0105.npy'>
+(1, 11, 7) (1, 11, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0106.npy'>
+(1, 12, 7) (1, 12, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0107.npy'>
+(1, 11, 7) (1, 11, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0108.npy'>
+(1, 14, 7) (1, 14, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0109.npy'>
+(1, 14, 7) (1, 14, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0110.npy'>
+(1, 13, 7) (1, 13, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0111.npy'>
+(1, 13, 7) (1, 13, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0113.npy'>
+(1, 12, 7) (1, 12, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0114.npy'>
+(1, 11, 7) (1, 11, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0115.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0116.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0117.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0118.npy'>
+(1, 11, 7) (1, 11, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0119.npy'>
+(1, 12, 7) (1, 12, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0120.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0123.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0124.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0129.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0130.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0134.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0135.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0136.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0137.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0138.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0139.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0142.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0143.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0144.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0145.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0146.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0147.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0148.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0149.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0151.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0152.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0154.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0156.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0157.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0159.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0160.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0161.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0163.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0164.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0165.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0166.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0169.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0170.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0172.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0173.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0174.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0175.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0176.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0177.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0178.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0180.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0181.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0182.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0183.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0184.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0185.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0187.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0188.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0189.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0190.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0191.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0193.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0194.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0196.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0199.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0200.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0205.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0206.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0208.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0210.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0211.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0212.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0213.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0215.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0216.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0217.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0218.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0219.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0220.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0222.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0223.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0224.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0225.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0227.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0229.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0230.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0231.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0232.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0235.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0237.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0238.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0239.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0241.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0242.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0244.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0245.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0246.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0247.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0249.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0250.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0251.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0252.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0253.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0254.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0255.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0256.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0258.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0261.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0262.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0263.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0264.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0266.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0267.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0268.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0270.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0271.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0272.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0273.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0274.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0275.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0276.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0277.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0280.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0282.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0283.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0287.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0288.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0289.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0292.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0293.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0294.npy'>
+(1, 11, 7) (1, 11, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0295.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0296.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0297.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0298.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0299.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0300.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0301.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0303.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0304.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0306.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0307.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0308.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0309.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0311.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0312.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0313.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0314.npy'>
+(1, 12, 7) (1, 12, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0315.npy'>
+(1, 11, 7) (1, 11, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0316.npy'>
+(1, 11, 7) (1, 11, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0317.npy'>
+(1, 10, 7) (1, 10, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0318.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0320.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0321.npy'>
+(1, 9, 7) (1, 9, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0322.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0323.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0324.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0325.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0326.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0330.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0331.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0332.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0333.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0335.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0337.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0338.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0339.npy'>
+(1, 8, 7) (1, 8, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0340.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0341.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0342.npy'>
+(1, 7, 7) (1, 7, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0343.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0348.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0349.npy'>
+(1, 6, 7) (1, 6, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0350.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0351.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0353.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0355.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0356.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0357.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0358.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0361.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0363.npy'>
+(1, 5, 7) (1, 5, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0364.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0366.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0368.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0369.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0370.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0374.npy'>
+(1, 4, 7) (1, 4, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0375.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0377.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0379.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0381.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0382.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0383.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0384.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0389.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0390.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0391.npy'>
+(1, 3, 7) (1, 3, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0392.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0396.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0398.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0399.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0400.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0402.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0403.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0404.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0406.npy'>
+(1, 2, 7) (1, 2, 7)
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0409.npy'>
+(1, 2, 7) (1, 2, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0410.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0411.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0412.npy'>
+(1, 1, 7) (1, 1, 7)
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0414.npy'>
+(1, 1, 7) (1, 1, 7)
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0416.npy'>
+(1, 1, 7) (1, 1, 7)
+(1, 1, 7) (1, 1, 7)
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0421.npy'>
+(1, 1, 7) (1, 1, 7)
+--------------------
+<_io.BufferedWriter name='../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0009_0422.npy'>
+(1, 1, 7) (1, 1, 7)
+(1, 1, 7) (1, 1, 7)
+(1, 2, 7) (1, 2, 7)
+--------------------
+Traceback (most recent call last):
+  File "../eval_rcnn.py", line 991, in <module>
+    eval_single_ckpt(root_result_dir)
+  File "../eval_rcnn.py", line 816, in eval_single_ckpt
+    eval_one_epoch(model, test_loader, epoch_id, root_result_dir, logger)
+  File "../eval_rcnn.py", line 727, in eval_one_epoch
+    ret_dict = eval_one_epoch_joint(model, dataloader, epoch_id, result_dir, logger)
+  File "../eval_rcnn.py", line 682, in eval_one_epoch_joint
+    save_kittikitt_format(cur_sample_id, pred_boxes3d_selected, final_output_dir, scores_selected, lidar_idx_table)
+  File "../eval_rcnn.py", line 100, in save_kittikitt_format
+    with open(kitti_output_file, 'wb') as f: 
+FileNotFoundError: [Errno 2] No such file or directory: '../test/DET/teacher/kitti_train_mf1500_w3_p16384_agum_f1_1/label/2011_09_26_0011_0005.npy'
+eval:   7%|▋         | 401/5349 [01:39<20:25,  4.04it/s, mode=EVAL, recall=1210/2355]
