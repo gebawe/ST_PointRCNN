@@ -27,8 +27,6 @@ c. Build and install the `pointnet2_lib`, `iou3d`, `roipool3d` libraries by exec
 sh build_and_install.sh
 ```
 
-## STUDENT Model
-
 ### Dataset preparation
 Arrange all training logs of Kitti dataset, inside in a single folder. Copy the address of that directory to in yaml file.
 NB: Transform the lidar frames from past and future into the reference frame coordinate frames in the format of [x,y,z,t], where t denots the time, t=-t in case of past and +t in case of future frame. 
