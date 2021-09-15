@@ -73,7 +73,7 @@ You could run the following command to evaluate the pretrained model:  First nav
 then run
 
 ```
-bash run_teacher_test_det_mf1500_w3_p16384_augm_f1_1.sh
+sbatch run_teacher_test_det_mf1500_w3_p16384_augm_f1_1.sh
 ```
 
 or
