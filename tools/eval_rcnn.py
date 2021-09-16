@@ -46,7 +46,7 @@ parser.add_argument("--extra_tag", type=str, default='default', help="extra tag 
 parser.add_argument('--output_dir', type=str, default=None, help='specify an output directory if needed')
 parser.add_argument("--ckpt_dir", type=str, default=None, help="specify a ckpt directory to be evaluated if needed")
 
-parser.add_argument('--save_result', action='store_true', default=False, help='save evaluation results to files')
+parser.add_argument('--save_result', action='store_true', default=True, help='save evaluation results to files')
 parser.add_argument('--save_rpn_feature', action='store_true', default=False,
                     help='save features for separately rcnn training and evaluation')
 
@@ -98,13 +98,17 @@ def save_kittikitt_format(sample_id,  bbox3d, kitti_output_dir, scores, lidar_id
     print("--------------------")
     kitti_output_file = os.path.join(kitti_output_dir, lidar_idx_table['%06d'%sample_id] + '.npy')
     with open(kitti_output_file, 'wb') as f: 
-        print(f)
+        #print(f)
+        '''
         for k in range(bbox3d.shape[0]):
             x, y, ry = bbox3d[k, 0], bbox3d[k, 1], bbox3d[k, 6]
             beta = np.arctan2(y, x)
             alpha = -np.sign(beta) * np.pi / 2 + beta + ry
-            
-        kitti_pred = np.concatenate((bbox3d[:, 0].reshape(-1, 1), bbox3d[:, 2].reshape(-1, 1), bbox3d[:, 1].reshape(-1, 1), bbox3d[:,3].reshape(-1, 1), bbox3d[:,5].reshape(-1, 1), bbox3d[:,4].reshape(-1, 1), (np.pi/2. - bbox3d[:, 6]).reshape(-1, 1), scores.reshape(-1, 1), np.ones_like(scores).reshape(-1, 1)), axis=1)
+        '''    
+        #kitti_pred = np.concatenate((bbox3d[:, 0].reshape(-1, 1), bbox3d[:, 2].reshape(-1, 1), bbox3d[:, 1].reshape(-1, 1), bbox3d[:,3].reshape(-1, 1), bbox3d[:,5].reshape(-1, 1), bbox3d[:,4].reshape(-1, 1), (np.pi/2. - bbox3d[:, 6]).reshape(-1, 1), np.ones_like(scores).reshape(-1, 1), scores.reshape(-1, 1)), axis=1)
+        pos = np.dot (kitti_to_kitti, np.concatenate((bbox3d[:, 0].reshape(-1, 1), bbox3d[:, 1].reshape(-1, 1), bbox3d[:, 2].reshape(-1, 1)), axis=1).T).T
+        kitti_pred = np.concatenate((pos, bbox3d[:,5].reshape(-1, 1), bbox3d[:,4].reshape(-1, 1), bbox3d[:,3].reshape(-1, 1), (bbox3d[:, 6]).reshape(-1, 1), np.ones_like(scores).reshape(-1, 1), scores.reshape(-1, 1)), axis=1)
+
         ###print(f"----kitti_pred {kitti_pred}")
         np.save(f, kitti_pred)
 
@@ -275,6 +279,12 @@ def eval_one_epoch_rpn(model, dataloader, epoch_id, result_dir, logger):
     #logger.info('-------------------performance of epoch %s---------------------' % epoch_id)
     #logger.info('max number of objects: %d' % max_num)
     logger.info(f"rpn iou avg: {(rpn_iou_avg / max(cnt, 1.0))}")
+
+    rpn_iou_avg_th = rpn_iou_avg/ max(cnt, 1.0)
+
+    names = ['IoU_Th', '0.1', '0.2', '0.3', '0.4', '0.5', '0.6', '0.7', '0.8', '0.9']
+    scores = ['FG_IoU', rpn_iou_avg_th[0], rpn_iou_avg_th[1], rpn_iou_avg_th[2], rpn_iou_avg_th[3], rpn_iou_avg_th[4], rpn_iou_avg_th[5], rpn_iou_avg_th[6], rpn_iou_avg_th[7], rpn_iou_avg_th[8]]
+    np.savetxt(seg_output_dir[:-10]+'/IoU_scores.csv', [p for p in zip(names, scores)], delimiter=',', fmt='%s')
 
     ret_dict = {'max_obj_num': max_num, 'rpn_iou': rpn_iou_avg / cnt}
 
@@ -489,7 +499,7 @@ def eval_one_epoch_joint(model, dataloader, epoch_id, result_dir, logger):
     mode = 'TEST' if args.test else 'EVAL'
 
     # Make output directory result_dir/final_result/data
-    final_output_dir = os.path.join(result_dir, 'label')
+    final_output_dir = os.path.join(result_dir, 'per_sweep_annotations_amodal')
     ###final_output_dir = result_dir
     os.makedirs(final_output_dir, exist_ok=True)
 
