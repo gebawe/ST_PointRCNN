@@ -56,8 +56,8 @@ class KittiDataset(torch_data.Dataset):
         assert os.path.exists(lidar_file)
         
         data = np.load(lidar_file)
-        lidar_time = data[:,0:5]
-        lidar_time = np.delete(lidar_time,3,1)
+        lidar_time = data[:,0:4]
+        #lidar_time = np.delete(lidar_time,3,1)
         s_lidar_time = lidar_time[-(cfg.past_frame) <= lidar_time[:,3]]
         pts_lidar = s_lidar_time[cfg.future_frame >= s_lidar_time[:,3]]
 
