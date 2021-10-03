@@ -315,10 +315,10 @@ class KittiRCNNDataset(KittiDataset):
         ########################################################################################################################################
 
         if self.mode == 'TEST':
-            #if cfg.RPN.USE_INTENSITY:
-                #pts_input = np.concatenate((ret_pts_rect, ret_pts_features), axis=1)  # (N, C)
-            #else:
-            pts_input = ret_pts_input
+            if cfg.RPN.USE_INTENSITY:
+                pts_input = np.concatenate((ret_pts_input, ret_pts_features), axis=1)  # (N, C)
+            else:
+                pts_input = ret_pts_input
             sample_info['pts_input'] = pts_input
             sample_info['pts_rect'] = ret_pts_rect
             sample_info['pts_features'] = ret_pts_features
