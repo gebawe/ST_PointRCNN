@@ -22,7 +22,7 @@ git submodule update --init --recursive
 ```
 b. The below conda command will create the conda environment and Install all the dependent python, Cuda libraries like easydict,tqdm, tensorboardX etc.
 ```
-conda env create --file environment.yaml
+conda env create --file environment1.yaml
 conda activate pointrcnn1
 ```
 c. Build and install the `pointnet2_lib`, `iou3d`, `roipool3d` libraries by executing the following command:
