@@ -20,8 +20,11 @@ If you forget to add the `--recursive` parameter, just run the following command
 ```shell
 git submodule update --init --recursive
 ```
-b. Install the dependent python libraries like `easydict`,`tqdm`, `tensorboardX ` etc.
-
+b. The below conda command will create the conda environment and Install all the dependent python, Cuda libraries like easydict,tqdm, tensorboardX etc.
+```
+conda env create --file environment.yaml
+conda activate pointrcnn1
+```
 c. Build and install the `pointnet2_lib`, `iou3d`, `roipool3d` libraries by executing the following command:
 ```shell
 sh build_and_install.sh
