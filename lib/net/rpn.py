@@ -76,10 +76,10 @@ class RPN(nn.Module):
         
         # select only the pts cloud without time        
         pts_input = pts_t_input[:, :, 0:3]
-        
-        backbone_xyz, backbone_features = self.backbone_net(pts_t_input[:, :, 0:4])   # (B, N, 4), (B, C, N) NB: 4 = [x,y,z,t]
-        
-        
+        if int(cfg.RPN.USE_INTENSITY):
+            backbone_xyz, backbone_features = self.backbone_net(pts_t_input[:, :, 0:4])   # (B, N, 4), (B, C, N) NB: 4 = [x,y,z,t]
+        else:
+            backbone_xyz, backbone_features = self.backbone_net(pts_t_input[:, :, 0:3])   # (B, N, 4), (B, C, N) NB: 4 = [x,y,z,t]        
         ## grab the time 
         pts_time = pts_t_input[:,:,3].cpu().data.numpy()[0]
         
