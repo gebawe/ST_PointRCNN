@@ -1,8 +1,8 @@
 # ST_PointRCNN -- Modified for Kitti/Custom Dataset
 
-### For more details of PointRCNN, please refer to [the original paper](https://arxiv.org/abs/1812.04244) or the author git [project page](#).
+'### For more details of PointRCNN, please refer to [the original paper](https://arxiv.org/abs/1812.04244) or the author git [project page](#).
 
-![Image description](architecture.jpg)
+![Image description](model-v4.png)
 ## Installation
 ### Requirements
 All the codes are tested in the following environment:
