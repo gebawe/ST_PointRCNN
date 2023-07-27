@@ -1,6 +1,6 @@
 # ST_PointRCNN -- Modified for Kitti/Custom Dataset
 
-![Image description](model-v4.png)
+![Image description](img/model-v4.png)
 ## Installation
 ### Requirements
 All the codes are tested in the following environment:
